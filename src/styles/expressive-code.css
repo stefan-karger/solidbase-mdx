@@ -1,0 +1,41 @@
+.expressive-code-overrides {
+  .expressive-code {
+    @apply my-4 font-mono;
+  }
+
+  .expressive-code .frame {
+    @apply shadow-none;
+  }
+
+  .expressive-code .frame pre {
+    @apply max-h-[650px] overflow-y-auto rounded-xl border-0 bg-zinc-950 dark:bg-zinc-900;
+  }
+
+  .expressive-code code {
+    @apply font-mono;
+  }
+
+  .expressive-code .ec-line.mark {
+    @apply bg-zinc-700/50;
+  }
+
+  .expressive-code .ec-line .code {
+    @apply border-none;
+  }
+
+  .expressive-code .copy button {
+    @apply size-6 bg-transparent opacity-100 before:content-none after:content-none;
+  }
+
+  [role="tablist"] {
+    @apply border-b-1 inline-flex gap-3 rounded-t-xl border-zinc-800 bg-zinc-900 px-3 pt-2.5 text-zinc-400;
+  }
+
+  [role="tab"] {
+    @apply border-b-1 border-transparent p-0 pb-1.5 data-[selected=]:border-zinc-50;
+  }
+
+  [role="tabpanel"] {
+    @apply rounded-b-xl bg-zinc-950 dark:bg-zinc-900;
+  }
+}

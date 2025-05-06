@@ -1,0 +1,27 @@
+{
+  "endOfLine": "lf",
+  "semi": false,
+  "singleQuote": false,
+  "tabWidth": 2,
+  "printWidth": 100,
+  "trailingComma": "none",
+
+  "importOrder": [
+    "<BUILTIN_MODULES>",
+    "",
+    "^(solid-js/(.*)$)|^(solid-js$)",
+    "^(@solidjs/(.*)$)",
+    "",
+    "<THIRD_PARTY_MODULES>",
+    "",
+    "^~/(.*)$",
+    "",
+    "^[.]"
+  ],
+  "importOrderCaseSensitive": false,
+
+  "tailwindStylesheet": "./src/app.css",
+  "tailwindFunctions": ["cn", "cva"],
+
+  "plugins": ["@ianvs/prettier-plugin-sort-imports", "prettier-plugin-tailwindcss"]
+}
