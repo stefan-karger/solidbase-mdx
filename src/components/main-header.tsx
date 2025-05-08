@@ -1,5 +1,6 @@
-import { MobileNavigation } from "./mobile-navigation"
-import { ModeToggle } from "./mode-toggle"
+import { GitHubStarButton } from "~/components/github-star-button"
+import { MobileNavigation } from "~/components/mobile-navigation"
+import { ModeToggle } from "~/components/mode-toggle"
 
 export function MainHeader() {
   return (
@@ -8,8 +9,9 @@ export function MainHeader() {
         <div class="container m-auto flex h-14 items-center justify-between">
           <div class="hidden md:flex">NAV</div>
           <MobileNavigation />
-          <div>
+          <div class="flex items-center gap-2">
             <ModeToggle />
+            <GitHubStarButton repo="stefan-karger/solid-ui" />
           </div>
         </div>
       </div>
