@@ -1,12 +1,12 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@import "@fontsource-variable/inter";
-@import "@fontsource-variable/jetbrains-mono";
+@import "@fontsource-variable/geist";
+@import "@fontsource-variable/geist-mono";
 
 @import "~/styles/expressive-code.css";
 
-@custom-variant dark (.dark &, [data-kb-theme= "dark"] &);
+@custom-variant dark (.dark &, [data-kb-theme="dark"] &);
 
 :root {
   --radius: 0.625rem;
@@ -56,7 +56,8 @@
   --error-foreground: oklch(0.396 0.141 25.723);
 }
 
-.dark {
+.dark,
+[data-kb-theme="dark"] {
   --background: oklch(0.141 0.005 285.823);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.21 0.006 285.885);
@@ -153,56 +154,43 @@
   --color-error-foreground: var(--error-foreground);
 
   --font-sans:
-    "Inter Variable", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Geist Variable", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
     "Segoe UI Symbol", "Noto Color Emoji";
 
   --font-mono:
-    "JetBrains Mono Variable", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
+    "Geist Mono Variable", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+  ::selection {
+    @apply bg-foreground text-background;
+  }
+  html {
+    @apply scroll-smooth;
+  }
   body {
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
     @apply bg-background text-foreground;
   }
+}
 
-  /* Custom scrollbar styling. Thanks @pranathiperii. */
-  ::-webkit-scrollbar {
-    width: 5px;
-  }
-  ::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: var(--border);
-    border-radius: 5px;
-  }
-  * {
-    scrollbar-width: thin;
-    scrollbar-color: var(--border) transparent;
+@utility no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
   }
 }
 
 @layer utilities {
-  /* Hide scrollbar for Chrome, Safari and Opera */
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-  /* Hide scrollbar for IE, Edge and Firefox */
-  .no-scrollbar {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-  }
-
-  .border-grid {
-    @apply border-border/50 dark:border-border border-dashed;
-  }
-
   .container-wrapper {
-    @apply border-border/70 dark:border-border mx-auto w-full max-w-[1400px] border-dashed min-[1400px]:border-x min-[1800px]:max-w-screen-2xl;
+    @apply mx-auto w-full max-w-[1400px] min-[1800px]:max-w-screen-2xl;
   }
 
   .container {

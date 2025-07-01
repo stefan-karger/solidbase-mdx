@@ -9,7 +9,7 @@ export function MainNavigation() {
   const location = useLocation()
 
   return (
-    <aside class="border-grid fixed top-14 z-30 hidden h-[calc(100vh-3.5rem)] w-full shrink-0 border-r md:sticky md:block">
+    <aside class="fixed top-14 z-30 hidden h-[calc(100vh-3.5rem)] w-full shrink-0 md:sticky md:block">
       <div class="no-scrollbar relative h-full overflow-y-auto py-6 pr-6">
         <div class="flex flex-col gap-6">
           <Index each={docsConfig.sidebarNav}>

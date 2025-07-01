@@ -1,4 +1,4 @@
-import { Title } from "@solidjs/meta";
+import { Title } from "@solidjs/meta"
 
 export default function About() {
   return (
@@ -6,5 +6,5 @@ export default function About() {
       <Title>About</Title>
       <h1>About</h1>
     </main>
-  );
+  )
 }

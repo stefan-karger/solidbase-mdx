@@ -1,6 +1,6 @@
 .expressive-code-overrides {
   .expressive-code {
-    @apply my-4 font-mono;
+    @apply my-4;
   }
 
   .expressive-code .frame {
@@ -8,7 +8,7 @@
   }
 
   .expressive-code .frame pre {
-    @apply max-h-[650px] overflow-y-auto rounded-xl border-0 bg-zinc-950 dark:bg-zinc-900;
+    @apply max-h-[650px] overflow-y-auto rounded-xl border-0 bg-zinc-900;
   }
 
   .expressive-code code {
@@ -23,8 +23,15 @@
     @apply border-none;
   }
 
-  .expressive-code .copy button {
-    @apply size-6 bg-transparent opacity-100 before:content-none after:content-none;
+  .expressive-code .frame.has-title:not(.is-terminal) .header {
+    @apply border-b-1 border-zinc-800 bg-zinc-900 bg-none;
+    &:before {
+      @apply border-0;
+    }
+  }
+
+  .expressive-code .frame.has-title:not(.is-terminal) .title {
+    @apply border-none bg-transparent text-[0.9rem] text-zinc-400 after:border-none;
   }
 
   [role="tablist"] {
