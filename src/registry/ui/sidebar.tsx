@@ -8,8 +8,8 @@ import {
   mergeProps,
   onCleanup,
   Show,
-  Switch,
   splitProps,
+  Switch,
   useContext
 } from "solid-js"
 
@@ -18,15 +18,21 @@ import { Polymorphic } from "@kobalte/core"
 import type { VariantProps } from "class-variance-authority"
 import { cva } from "class-variance-authority"
 
+import type { ButtonProps } from "~/components/ui/button"
+import { Button } from "~/components/ui/button"
+import { Separator } from "~/components/ui/separator"
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle
+} from "~/components/ui/sheet"
+import { Skeleton } from "~/components/ui/skeleton"
+import { TextField, TextFieldInput } from "~/components/ui/text-field"
+import { Tooltip, TooltipContent, TooltipTrigger } from "~/components/ui/tooltip"
 import { useIsMobile } from "~/hooks/use-mobile"
 import { cn } from "~/lib/utils"
-import type { ButtonProps } from "~/registry/ui/button"
-import { Button } from "~/registry/ui/button"
-import { Separator } from "~/registry/ui/separator"
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "~/registry/ui/sheet"
-import { Skeleton } from "~/registry/ui/skeleton"
-import { TextField, TextFieldInput } from "~/registry/ui/text-field"
-import { Tooltip, TooltipContent, TooltipTrigger } from "~/registry/ui/tooltip"
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state"
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7
@@ -126,16 +132,16 @@ const SidebarProvider: Component<SidebarProviderProps> = (rawProps) => {
   return (
     <SidebarContext.Provider value={contextValue}>
       <div
-        class={cn(
-          "group/sidebar-wrapper flex min-h-svh w-full has-data-[variant=inset]:bg-sidebar",
-          local.class
-        )}
         data-slot="sidebar-wrapper"
         style={{
           "--sidebar-width": SIDEBAR_WIDTH,
           "--sidebar-width-icon": SIDEBAR_WIDTH_ICON,
           ...local.style
         }}
+        class={cn(
+          "group/sidebar-wrapper flex min-h-svh w-full has-data-[variant=inset]:bg-sidebar",
+          local.class
+        )}
         {...others}
       >
         {local.children}
@@ -167,27 +173,27 @@ const Sidebar: Component<SidebarProps> = (rawProps) => {
     <Switch>
       <Match when={local.collapsible === "none"}>
         <div
+          data-slot="sidebar"
           class={cn(
             "flex h-full w-(--sidebar-width) flex-col bg-sidebar text-sidebar-foreground",
             local.class
           )}
-          data-slot="sidebar"
           {...others}
         >
           {local.children}
         </div>
       </Match>
       <Match when={isMobile()}>
-        <Sheet onOpenChange={setOpenMobile} open={openMobile()} {...others}>
+        <Sheet open={openMobile()} onOpenChange={setOpenMobile} {...others}>
           <SheetContent
-            class="w-(--sidebar-width) bg-sidebar p-0 text-sidebar-foreground [&>button]:hidden"
-            data-mobile="true"
             data-sidebar="sidebar"
             data-slot="sidebar"
-            side={local.side}
+            data-mobile="true"
+            class="w-(--sidebar-width) bg-sidebar p-0 text-sidebar-foreground [&>button]:hidden"
             style={{
               "--sidebar-width": SIDEBAR_WIDTH_MOBILE
             }}
+            side={local.side}
           >
             <SheetHeader class="sr-only">
               <SheetTitle>Sidebar</SheetTitle>
@@ -199,15 +205,16 @@ const Sidebar: Component<SidebarProps> = (rawProps) => {
       </Match>
       <Match when={!isMobile()}>
         <div
-          class="group peer hidden text-sidebar-foreground md:block"
-          data-collapsible={state() === "collapsed" ? local.collapsible : ""}
-          data-side={local.side}
           data-slot="sidebar"
+          class="group peer hidden text-sidebar-foreground md:block"
           data-state={state()}
+          data-collapsible={state() === "collapsed" ? local.collapsible : ""}
           data-variant={local.variant}
+          data-side={local.side}
         >
           {/* This is what handles the sidebar gap on desktop */}
           <div
+            data-slot="sidebar-gap"
             class={cn(
               "relative w-(--sidebar-width) bg-transparent transition-[width] duration-200 ease-linear",
               "group-data-[collapsible=offcanvas]:w-0",
@@ -216,9 +223,9 @@ const Sidebar: Component<SidebarProps> = (rawProps) => {
                 ? "group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)+(--spacing(4)))]"
                 : "group-data-[collapsible=icon]:w-(--sidebar-width-icon)"
             )}
-            data-slot="sidebar-gap"
           />
           <div
+            data-slot="sidebar-container"
             class={cn(
               "fixed inset-y-0 z-10 hidden h-svh w-(--sidebar-width) transition-[left,right,width] duration-200 ease-linear md:flex",
               local.side === "left"
@@ -230,13 +237,12 @@ const Sidebar: Component<SidebarProps> = (rawProps) => {
                 : "group-data-[collapsible=icon]:w-(--sidebar-width-icon) group-data-[side=left]:border-r group-data-[side=right]:border-l",
               local.class
             )}
-            data-slot="sidebar-container"
             {...others}
           >
             <div
-              class="flex h-full w-full flex-col bg-sidebar group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:border-sidebar-border group-data-[variant=floating]:shadow-sm"
-              data-sidebar="sidebar"
               data-slot="sidebar-inner"
+              data-sidebar="sidebar"
+              class="flex h-full w-full flex-col bg-sidebar group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:border-sidebar-border group-data-[variant=floating]:shadow-sm"
             >
               {local.children}
             </div>
@@ -257,28 +263,27 @@ const SidebarTrigger = <T extends ValidComponent = "button">(props: SidebarTrigg
 
   return (
     <Button
-      class={cn("size-7", local.class)}
-      data-sidebar="trigger"
       data-slot="sidebar-trigger"
+      data-sidebar="trigger"
+      variant="ghost"
+      size="icon"
+      class={cn("size-7", local.class)}
       onClick={(event: MouseEvent) => {
         local.onClick?.(event)
         toggleSidebar()
       }}
-      size="icon"
-      variant="ghost"
       {...others}
     >
       <svg
-        class="size-4"
+        viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
+        stroke-width="2"
         stroke-linecap="round"
         stroke-linejoin="round"
-        stroke-width="2"
-        viewBox="0 0 24 24"
+        class="size-4"
       >
-        <title>Sidebar Trigger</title>
-        <rect height="18" rx="2" width="18" x="3" y="3" />
+        <rect width="18" height="18" x="3" y="3" rx="2" />
         <path d="M9 3v18" />
       </svg>
       <span class="sr-only">Toggle Sidebar</span>
@@ -292,21 +297,21 @@ const SidebarRail: Component<ComponentProps<"button">> = (props) => {
 
   return (
     <button
+      data-slot="sidebar-rail"
+      data-sidebar="rail"
       aria-label="Toggle Sidebar"
+      tabIndex={-1}
+      onClick={toggleSidebar}
+      title="Toggle Sidebar"
       class={cn(
-        "-translate-x-1/2 group-data-[side=left]:-right-4 absolute inset-y-0 z-20 hidden w-4 transition-all ease-linear after:absolute after:inset-y-0 after:left-1/2 after:w-[2px] hover:after:bg-sidebar-border group-data-[side=right]:left-0 sm:flex",
+        "absolute inset-y-0 z-20 hidden w-4 -translate-x-1/2 transition-all ease-linear group-data-[side=left]:-right-4 group-data-[side=right]:left-0 after:absolute after:inset-y-0 after:left-1/2 after:w-[2px] hover:after:bg-sidebar-border sm:flex",
         "in-data-[side=left]:cursor-w-resize in-data-[side=right]:cursor-e-resize",
         "[[data-side=left][data-state=collapsed]_&]:cursor-e-resize [[data-side=right][data-state=collapsed]_&]:cursor-w-resize",
-        "group-data-[collapsible=offcanvas]:translate-x-0 hover:group-data-[collapsible=offcanvas]:bg-sidebar group-data-[collapsible=offcanvas]:after:left-full",
+        "group-data-[collapsible=offcanvas]:translate-x-0 group-data-[collapsible=offcanvas]:after:left-full hover:group-data-[collapsible=offcanvas]:bg-sidebar",
         "[[data-side=left][data-collapsible=offcanvas]_&]:-right-2",
         "[[data-side=right][data-collapsible=offcanvas]_&]:-left-2",
         local.class
       )}
-      data-sidebar="rail"
-      data-slot="sidebar-rail"
-      onClick={toggleSidebar}
-      tabIndex={-1}
-      title="Toggle Sidebar"
       {...others}
     />
   )
@@ -316,12 +321,12 @@ const SidebarInset: Component<ComponentProps<"main">> = (props) => {
   const [local, others] = splitProps(props, ["class"])
   return (
     <main
+      data-slot="sidebar-inset"
       class={cn(
         "relative flex w-full flex-1 flex-col bg-background",
-        "md:peer-data-[variant=inset]:peer-data-[state=collapsed]:ml-2 md:peer-data-[variant=inset]:m-2 md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=inset]:rounded-xl md:peer-data-[variant=inset]:shadow-sm",
+        "md:peer-data-[variant=inset]:m-2 md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=inset]:rounded-xl md:peer-data-[variant=inset]:shadow-sm md:peer-data-[variant=inset]:peer-data-[state=collapsed]:ml-2",
         local.class
       )}
-      data-slot="sidebar-inset"
       {...others}
     />
   )
@@ -336,9 +341,9 @@ const SidebarInput = <T extends ValidComponent = "input">(props: SidebarInputPro
   return (
     <TextField>
       <TextFieldInput
-        class={cn("h-8 w-full bg-background shadow-none", local.class)}
-        data-sidebar="input"
         data-slot="sidebar-input"
+        data-sidebar="input"
+        class={cn("h-8 w-full bg-background shadow-none", local.class)}
         {...others}
       />
     </TextField>
@@ -349,9 +354,9 @@ const SidebarHeader: Component<ComponentProps<"div">> = (props) => {
   const [local, others] = splitProps(props, ["class"])
   return (
     <div
-      class={cn("flex flex-col gap-2 p-2", local.class)}
-      data-sidebar="header"
       data-slot="sidebar-header"
+      data-sidebar="header"
+      class={cn("flex flex-col gap-2 p-2", local.class)}
       {...others}
     />
   )
@@ -361,9 +366,9 @@ const SidebarFooter: Component<ComponentProps<"div">> = (props) => {
   const [local, others] = splitProps(props, ["class"])
   return (
     <div
-      class={cn("flex flex-col gap-2 p-2", local.class)}
-      data-sidebar="footer"
       data-slot="sidebar-footer"
+      data-sidebar="footer"
+      class={cn("flex flex-col gap-2 p-2", local.class)}
       {...others}
     />
   )
@@ -375,9 +380,9 @@ const SidebarSeparator = <T extends ValidComponent = "hr">(props: SidebarSeparat
   const [local, others] = splitProps(props as SidebarSeparatorProps, ["class"])
   return (
     <Separator
-      class={cn("mx-2 w-auto bg-sidebar-border", local.class)}
-      data-sidebar="separator"
       data-slot="sidebar-separator"
+      data-sidebar="separator"
+      class={cn("mx-2 w-auto bg-sidebar-border", local.class)}
       {...others}
     />
   )
@@ -387,12 +392,12 @@ const SidebarContent: Component<ComponentProps<"div">> = (props) => {
   const [local, others] = splitProps(props, ["class"])
   return (
     <div
+      data-slot="sidebar-content"
+      data-sidebar="content"
       class={cn(
         "flex min-h-0 flex-1 flex-col gap-2 overflow-auto group-data-[collapsible=icon]:overflow-hidden",
         local.class
       )}
-      data-sidebar="content"
-      data-slot="sidebar-content"
       {...others}
     />
   )
@@ -402,9 +407,9 @@ const SidebarGroup: Component<ComponentProps<"div">> = (props) => {
   const [local, others] = splitProps(props, ["class"])
   return (
     <div
-      class={cn("relative flex w-full min-w-0 flex-col p-2", local.class)}
-      data-sidebar="group"
       data-slot="sidebar-group"
+      data-sidebar="group"
+      class={cn("relative flex w-full min-w-0 flex-col p-2", local.class)}
       {...others}
     />
   )
@@ -420,13 +425,13 @@ const SidebarGroupLabel = <T extends ValidComponent = "div">(
   return (
     <Polymorphic<SidebarGroupLabelProps>
       as="div"
+      data-slot="sidebar-group-label"
+      data-sidebar="group-label"
       class={cn(
-        "flex h-8 shrink-0 items-center rounded-md px-2 font-medium text-sidebar-foreground/70 text-xs outline-hidden ring-sidebar-ring transition-[margin,opacity] duration-200 ease-linear focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0",
+        "flex h-8 shrink-0 items-center rounded-md px-2 text-xs font-medium text-sidebar-foreground/70 ring-sidebar-ring outline-hidden transition-[margin,opacity] duration-200 ease-linear focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0",
         "group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0",
         local.class
       )}
-      data-sidebar="group-label"
-      data-slot="sidebar-group-label"
       {...others}
     />
   )
@@ -441,15 +446,15 @@ const SidebarGroupAction = <T extends ValidComponent = "button">(
   return (
     <Polymorphic<SidebarGroupActionProps>
       as="button"
+      data-slot="sidebar-group-action"
+      data-sidebar="group-action"
       class={cn(
-        "absolute top-3.5 right-3 flex aspect-square w-5 items-center justify-center rounded-md p-0 text-sidebar-foreground outline-hidden ring-sidebar-ring transition-transform hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0",
+        "absolute top-3.5 right-3 flex aspect-square w-5 items-center justify-center rounded-md p-0 text-sidebar-foreground ring-sidebar-ring outline-hidden transition-transform hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0",
         // Increases the hit area of the button on mobile.
-        "after:-inset-2 after:absolute md:after:hidden",
+        "after:absolute after:-inset-2 md:after:hidden",
         "group-data-[collapsible=icon]:hidden",
         local.class
       )}
-      data-sidebar="group-action"
-      data-slot="sidebar-group-action"
       {...others}
     />
   )
@@ -459,9 +464,9 @@ const SidebarGroupContent: Component<ComponentProps<"div">> = (props) => {
   const [local, others] = splitProps(props, ["class"])
   return (
     <div
-      class={cn("w-full text-sm", local.class)}
-      data-sidebar="group-content"
       data-slot="sidebar-group-content"
+      data-sidebar="group-content"
+      class={cn("w-full text-sm", local.class)}
       {...others}
     />
   )
@@ -471,9 +476,9 @@ const SidebarMenu: Component<ComponentProps<"ul">> = (props) => {
   const [local, others] = splitProps(props, ["class"])
   return (
     <ul
-      class={cn("flex w-full min-w-0 flex-col gap-1", local.class)}
-      data-sidebar="menu"
       data-slot="sidebar-menu"
+      data-sidebar="menu"
+      class={cn("flex w-full min-w-0 flex-col gap-1", local.class)}
       {...others}
     />
   )
@@ -483,16 +488,16 @@ const SidebarMenuItem: Component<ComponentProps<"li">> = (props) => {
   const [local, others] = splitProps(props, ["class"])
   return (
     <li
-      class={cn("group/menu-item relative", local.class)}
-      data-sidebar="menu-item"
       data-slot="sidebar-menu-item"
+      data-sidebar="menu-item"
+      class={cn("group/menu-item relative", local.class)}
       {...others}
     />
   )
 }
 
 const sidebarMenuButtonVariants = cva(
-  "peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left text-sm outline-hidden ring-sidebar-ring transition-[width,height,padding] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 group-has-data-[sidebar=menu-action]/menu-item:pr-8 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0",
+  "peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left text-sm ring-sidebar-ring outline-hidden transition-[width,height,padding] group-has-data-[sidebar=menu-action]/menu-item:pr-8 group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0",
   {
     variants: {
       variant: {
@@ -532,20 +537,20 @@ const SidebarMenuButton = <T extends ValidComponent = "button">(
   ])
   const { isMobile, state } = useSidebar()
 
-  const MenuButton = (_props: SidebarMenuButtonProps) => {
-    const [_local, _others] = splitProps(_props, ["class"])
+  const MenuButton = (props: SidebarMenuButtonProps) => {
+    const [_local, _others] = splitProps(props, ["class"])
     return (
       <Polymorphic<SidebarMenuButtonProps>
         as="button"
+        data-slot="sidebar-menu-button"
+        data-sidebar="menu-button"
+        data-size={local.size}
+        data-active={local.isActive}
         class={cn(
           sidebarMenuButtonVariants({ variant: local.variant, size: local.size }),
           _local.class,
           local.class
         )}
-        data-active={local.isActive}
-        data-sidebar="menu-button"
-        data-size={local.size}
-        data-slot="sidebar-menu-button"
         {..._others}
         {...others}
       />
@@ -553,7 +558,7 @@ const SidebarMenuButton = <T extends ValidComponent = "button">(
   }
 
   return (
-    <Show fallback={<MenuButton />} when={local.tooltip}>
+    <Show when={local.tooltip} fallback={<MenuButton />}>
       <Tooltip placement="right">
         <TooltipTrigger as={MenuButton} class="w-full" />
         <TooltipContent hidden={state() !== "collapsed" || isMobile()}>
@@ -577,20 +582,20 @@ const SidebarMenuAction = <T extends ValidComponent = "button">(
   return (
     <Polymorphic<SidebarMenuActionProps>
       as="button"
+      data-slot="sidebar-menu-action"
+      data-sidebar="menu-action"
       class={cn(
-        "absolute top-1.5 right-1 flex aspect-square w-5 items-center justify-center rounded-md p-0 text-sidebar-foreground outline-hidden ring-sidebar-ring transition-transform hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 peer-hover/menu-button:text-sidebar-accent-foreground [&>svg]:size-4 [&>svg]:shrink-0",
+        "absolute top-1.5 right-1 flex aspect-square w-5 items-center justify-center rounded-md p-0 text-sidebar-foreground ring-sidebar-ring outline-hidden transition-transform peer-hover/menu-button:text-sidebar-accent-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0",
         // Increases the hit area of the button on mobile.
-        "after:-inset-2 after:absolute md:after:hidden",
+        "after:absolute after:-inset-2 md:after:hidden",
         "peer-data-[size=sm]/menu-button:top-1",
         "peer-data-[size=default]/menu-button:top-1.5",
         "peer-data-[size=lg]/menu-button:top-2.5",
         "group-data-[collapsible=icon]:hidden",
         local.showOnHover &&
-          "group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 data-[state=open]:opacity-100 peer-data-[active=true]/menu-button:text-sidebar-accent-foreground md:opacity-0",
+          "group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 peer-data-[active=true]/menu-button:text-sidebar-accent-foreground data-[state=open]:opacity-100 md:opacity-0",
         local.class
       )}
-      data-sidebar="menu-action"
-      data-slot="sidebar-menu-action"
       {...others}
     />
   )
@@ -600,8 +605,10 @@ const SidebarMenuBadge: Component<ComponentProps<"div">> = (props) => {
   const [local, others] = splitProps(props, ["class"])
   return (
     <div
+      data-slot="sidebar-menu-badge"
+      data-sidebar="menu-badge"
       class={cn(
-        "pointer-events-none absolute right-1 flex h-5 min-w-5 select-none items-center justify-center rounded-md px-1 font-medium text-sidebar-foreground text-xs tabular-nums",
+        "pointer-events-none absolute right-1 flex h-5 min-w-5 items-center justify-center rounded-md px-1 text-xs font-medium text-sidebar-foreground tabular-nums select-none",
         "peer-hover/menu-button:text-sidebar-accent-foreground peer-data-[active=true]/menu-button:text-sidebar-accent-foreground",
         "peer-data-[size=sm]/menu-button:top-1",
         "peer-data-[size=default]/menu-button:top-1.5",
@@ -609,8 +616,6 @@ const SidebarMenuBadge: Component<ComponentProps<"div">> = (props) => {
         "group-data-[collapsible=icon]:hidden",
         local.class
       )}
-      data-sidebar="menu-badge"
-      data-slot="sidebar-menu-badge"
       {...others}
     />
   )
@@ -629,9 +634,9 @@ const SidebarMenuSkeleton: Component<SidebarMenuSkeletonProps> = (rawProps) => {
 
   return (
     <div
-      class={cn("flex h-8 items-center gap-2 rounded-md px-2", local.class)}
-      data-sidebar="menu-skeleton"
       data-slot="sidebar-menu-skeleton"
+      data-sidebar="menu-skeleton"
+      class={cn("flex h-8 items-center gap-2 rounded-md px-2", local.class)}
       {...others}
     >
       {local.showIcon && <Skeleton class="size-4 rounded-md" data-sidebar="menu-skeleton-icon" />}
@@ -650,13 +655,13 @@ const SidebarMenuSub: Component<ComponentProps<"ul">> = (props) => {
   const [local, others] = splitProps(props, ["class"])
   return (
     <ul
+      data-slot="sidebar-menu-sub"
+      data-sidebar="menu-sub"
       class={cn(
-        "mx-3.5 flex min-w-0 translate-x-px flex-col gap-1 border-sidebar-border border-l px-2.5 py-0.5",
+        "mx-3.5 flex min-w-0 translate-x-px flex-col gap-1 border-l border-sidebar-border px-2.5 py-0.5",
         "group-data-[collapsible=icon]:hidden",
         local.class
       )}
-      data-sidebar="menu-sub"
-      data-slot="sidebar-menu-sub"
       {...others}
     />
   )
@@ -666,9 +671,9 @@ const SidebarMenuSubItem: Component<ComponentProps<"li">> = (props) => {
   const [local, others] = splitProps(props, ["class"])
   return (
     <li
-      class={cn("group/menu-sub-item relative", local.class)}
-      data-sidebar="menu-sub-item"
       data-slot="sidebar-menu-sub-item"
+      data-sidebar="menu-sub-item"
+      class={cn("group/menu-sub-item relative", local.class)}
       {...others}
     />
   )
@@ -692,18 +697,18 @@ const SidebarMenuSubButton = <T extends ValidComponent = "a">(
   return (
     <Polymorphic<SidebarMenuSubButtonProps>
       as="a"
+      data-slot="sidebar-menu-sub-button"
+      data-sidebar="menu-sub-button"
+      data-size={local.size}
+      data-active={local.isActive}
       class={cn(
-        "-translate-x-px flex h-7 min-w-0 items-center gap-2 overflow-hidden rounded-md px-2 text-sidebar-foreground outline-hidden ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0 [&>svg]:text-sidebar-accent-foreground",
+        "flex h-7 min-w-0 -translate-x-px items-center gap-2 overflow-hidden rounded-md px-2 text-sidebar-foreground ring-sidebar-ring outline-hidden hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0 [&>svg]:text-sidebar-accent-foreground",
         "data-[active=true]:bg-sidebar-accent data-[active=true]:text-sidebar-accent-foreground",
         local.size === "sm" && "text-xs",
         local.size === "md" && "text-sm",
         "group-data-[collapsible=icon]:hidden",
         local.class
       )}
-      data-active={local.isActive}
-      data-sidebar="menu-sub-button"
-      data-size={local.size}
-      data-slot="sidebar-menu-sub-button"
       {...others}
     />
   )

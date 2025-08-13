@@ -1,5 +1,5 @@
 import type { ValidComponent } from "solid-js"
-import { type Component, splitProps } from "solid-js"
+import { splitProps, type Component } from "solid-js"
 
 import type { PolymorphicProps } from "@kobalte/core/polymorphic"
 import * as TooltipPrimitive from "@kobalte/core/tooltip"
@@ -24,11 +24,11 @@ const TooltipContent = <T extends ValidComponent = "div">(
   return (
     <TooltipPrimitive.Portal>
       <TooltipPrimitive.Content
+        data-slot="tooltip-content"
         class={cn(
-          "fade-in-0 zoom-in-95 z-50 origin-[var(--kb-popover-content-transform-origin)] overflow-hidden rounded-md border bg-popover px-3 py-1.5 text-popover-foreground text-sm shadow-md",
+          "z-50 origin-[var(--kb-popover-content-transform-origin)] overflow-hidden rounded-md border bg-popover px-3 py-1.5 text-sm text-popover-foreground shadow-md fade-in-0 zoom-in-95",
           local.class
         )}
-        data-slot="tooltip-content"
         {...others}
       />
     </TooltipPrimitive.Portal>

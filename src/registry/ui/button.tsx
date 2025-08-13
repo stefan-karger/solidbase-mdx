@@ -9,7 +9,7 @@ import { cva } from "class-variance-authority"
 import { cn } from "~/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium text-sm outline-none transition-all focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+  "inline-flex shrink-0 items-center justify-center gap-2 rounded-md text-sm font-medium whitespace-nowrap transition-all outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
   {
     variants: {
       variant: {
@@ -37,10 +37,7 @@ const buttonVariants = cva(
 )
 
 type ButtonProps<T extends ValidComponent = "button"> = ButtonPrimitive.ButtonRootProps<T> &
-  VariantProps<typeof buttonVariants> & {
-    class?: string | undefined
-    children?: JSX.Element
-  }
+  VariantProps<typeof buttonVariants> & { class?: string | undefined; children?: JSX.Element }
 
 const Button = <T extends ValidComponent = "button">(
   props: PolymorphicProps<T, ButtonProps<T>>
@@ -48,8 +45,8 @@ const Button = <T extends ValidComponent = "button">(
   const [local, others] = splitProps(props as ButtonProps, ["variant", "size", "class"])
   return (
     <ButtonPrimitive.Root
-      class={cn(buttonVariants({ variant: local.variant, size: local.size }), local.class)}
       data-slot="button"
+      class={cn(buttonVariants({ variant: local.variant, size: local.size }), local.class)}
       {...others}
     />
   )

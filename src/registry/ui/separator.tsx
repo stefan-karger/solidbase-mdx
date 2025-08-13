@@ -15,12 +15,13 @@ const Separator = <T extends ValidComponent = "hr">(
   const [local, others] = splitProps(props as SeparatorRootProps, ["class", "orientation"])
   return (
     <SeparatorPrimitive.Root
+      data-slot="separator-root"
+      orientation={local.orientation ?? "horizontal"}
       class={cn(
-        "shrink-0 bg-border data-[orientation=horizontal]:h-px data-[orientation=vertical]:h-full data-[orientation=horizontal]:w-full data-[orientation=vertical]:w-px",
+        "shrink-0 bg-border",
+        local.orientation === "vertical" ? "h-full w-px" : "h-px w-full",
         local.class
       )}
-      data-slot="separator"
-      orientation={local.orientation ?? "horizontal"}
       {...others}
     />
   )

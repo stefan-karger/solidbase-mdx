@@ -8,6 +8,7 @@
     "version": "vinxi version"
   },
   "dependencies": {
+    "@corvu/calendar": "^0.1.2",
     "@corvu/drawer": "^0.2.4",
     "@fontsource-variable/geist": "^5.2.6",
     "@fontsource-variable/geist-mono": "^5.2.6",

@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@corvu/calendar':
+        specifier: ^0.1.2
+        version: 0.1.2(solid-js@1.9.8)
       '@corvu/drawer':
         specifier: ^0.2.4
         version: 0.2.4(solid-js@1.9.8)
@@ -355,6 +358,11 @@ packages:
   '@colors/colors@1.6.0':
     resolution: {integrity: sha512-Ir+AOibqzrIsL6ajt3Rz3LskB7OiMVHqltZmspbW/TJuTVuyOMirVqAkjfY6JISiLHgyNqicAC8AyHHGzNd/dA==}
     engines: {node: '>=0.1.90'}
+
+  '@corvu/calendar@0.1.2':
+    resolution: {integrity: sha512-Vbdns1iNNI0WTIwDZS7m9pHWtr/YTz7yrisXhHUCfl4mxDvb9W8MMmun651wiEjhL7+OrcNbbl2kTOmYSFIf4g==}
+    peerDependencies:
+      solid-js: ^1.8
 
   '@corvu/dialog@0.2.4':
     resolution: {integrity: sha512-n54vJq+fOy8GVrnYBdJpD6JXNuyx7LOeMrRxwzAvZnYGpW8+AA12tnb/P/2emJj/HjOO5otheGKb0breshdFlA==}
@@ -4856,6 +4864,11 @@ snapshots:
       mime: 3.0.0
 
   '@colors/colors@1.6.0': {}
+
+  '@corvu/calendar@0.1.2(solid-js@1.9.8)':
+    dependencies:
+      '@corvu/utils': 0.4.2(solid-js@1.9.8)
+      solid-js: 1.9.8
 
   '@corvu/dialog@0.2.4(solid-js@1.9.8)':
     dependencies:

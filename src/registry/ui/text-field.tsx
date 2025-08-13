@@ -18,8 +18,8 @@ const TextField = <T extends ValidComponent = "div">(
   const [local, others] = splitProps(props as TextFieldRootProps, ["class"])
   return (
     <TextFieldPrimitive.Root
-      class={cn("flex flex-col gap-2", local.class)}
       data-slot="textfield"
+      class={cn("flex flex-col gap-2", local.class)}
       {...others}
     />
   )
@@ -60,14 +60,14 @@ const TextFieldInput = <T extends ValidComponent = "input">(
   const [local, others] = splitProps(props as TextFieldInputProps, ["type", "class"])
   return (
     <TextFieldPrimitive.Input
+      type={local.type}
+      data-slot="textfield-input"
       class={cn(
-        "flex h-9 w-full min-w-0 rounded-md border border-input bg-transparent px-3 py-1 text-base outline-none transition-[color,box-shadow] selection:bg-primary selection:text-primary-foreground file:inline-flex file:h-7 file:border-0 file:bg-transparent file:font-medium file:text-foreground file:text-sm placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm dark:bg-input/30",
+        "flex h-9 w-full min-w-0 rounded-md border border-input bg-transparent px-3 py-1 text-base transition-[color,box-shadow] outline-none selection:bg-primary selection:text-primary-foreground file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm dark:bg-input/30",
         "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
         "aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40",
         local.class
       )}
-      data-slot="textfield-input"
-      type={local.type}
       {...others}
     />
   )
@@ -82,24 +82,24 @@ const TextFieldTextArea = <T extends ValidComponent = "textarea">(
   const [local, others] = splitProps(props as TextFieldTextAreaProps, ["class"])
   return (
     <TextFieldPrimitive.TextArea
+      data-slot="textfield-textarea"
       class={cn(
-        "field-sizing-content flex min-h-16 w-full rounded-md border border-input bg-transparent px-3 py-2 text-base outline-none transition-[color,box-shadow] placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:aria-invalid:ring-destructive/40",
+        "flex field-sizing-content min-h-16 w-full rounded-md border border-input bg-transparent px-3 py-2 text-base transition-[color,box-shadow] outline-none placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:aria-invalid:ring-destructive/40",
         local.class
       )}
-      data-slot="textfield-textarea"
       {...others}
     />
   )
 }
 
 const labelVariants = cva(
-  "flex select-none items-center gap-2 font-medium text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-50 group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50",
+  "flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50",
   {
     variants: {
       variant: {
         label: "data-[invalid]:text-destructive",
         description: "font-normal text-muted-foreground",
-        error: "text-destructive text-xs"
+        error: "text-xs text-destructive"
       }
     },
     defaultVariants: {
@@ -117,8 +117,8 @@ const TextFieldLabel = <T extends ValidComponent = "label">(
   const [local, others] = splitProps(props as TextFieldLabelProps, ["class"])
   return (
     <TextFieldPrimitive.Label
-      class={cn(labelVariants(), local.class)}
       data-slot="textfield-label"
+      class={cn(labelVariants(), local.class)}
       {...others}
     />
   )
@@ -135,8 +135,8 @@ const TextFieldDescription = <T extends ValidComponent = "div">(
   const [local, others] = splitProps(props as TextFieldDescriptionProps, ["class"])
   return (
     <TextFieldPrimitive.Description
-      class={cn(labelVariants({ variant: "description" }), local.class)}
       data-slot="textfield-description"
+      class={cn(labelVariants({ variant: "description" }), local.class)}
       {...others}
     />
   )
@@ -153,8 +153,8 @@ const TextFieldErrorMessage = <T extends ValidComponent = "div">(
   const [local, others] = splitProps(props as TextFieldErrorMessageProps, ["class"])
   return (
     <TextFieldPrimitive.ErrorMessage
-      class={cn(labelVariants({ variant: "error" }), local.class)}
       data-slot="textfield-error"
+      class={cn(labelVariants({ variant: "error" }), local.class)}
       {...others}
     />
   )

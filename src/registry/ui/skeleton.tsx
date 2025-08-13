@@ -15,8 +15,8 @@ const Skeleton = <T extends ValidComponent = "div">(
   const [local, others] = splitProps(props as SkeletonRootProps, ["class"])
   return (
     <SkeletonPrimitive.Root
-      class={cn("rounded-md bg-accent data-[animate='true']:animate-pulse", local.class)}
       data-slot="skeleton"
+      class={cn("rounded-md bg-accent data-[animate='true']:animate-pulse", local.class)}
       {...others}
     />
   )
