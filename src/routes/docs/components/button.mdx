@@ -1,37 +1,47 @@
 ---
-title: TITLE
-description: DESCRIPTION
+title: Button
+description: Displays a button or a component that looks like a button.
 ---
 
-# H1
+<ComponentPreview name="button" />
 
-## H2
+## Installation
 
-### H3
+<Tabs>
 
-```tsx {1} showLineNumbers
-import { Title } from "@solidjs/meta"
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
 
-export default function About() {
-  return (
-    <main>
-      <Title>About</Title>
-      <h1>About</h1>
-    </main>
-  )
-}
-```
+<TabsContent value="cli">
 
 ```package-exec
 solidui-cli@latest add button
 ```
 
-### H3 die Zweite
+</TabsContent>
 
-```file=~/components/ui/button.tsx
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```package-install
+@kobalte/core
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+```file="~/registry/ui/button.tsx" showLineNumbers
 
 ```
 
-## H2 die zweite
+<Step>Update the import paths to match your project setup.</Step>
 
-<kbd>Ctrl</kbd> + <kbd>C</kbd>
+</Steps>
+
+</TabsContent>
+
+</Tabs>

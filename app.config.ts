@@ -23,12 +23,16 @@ export default defineConfig(
     {
       markdown: {
         expressiveCode: {
-          themes: ["github-dark-default"]
-          // styleOverrides: {
-          //   uiFontWeight: "300",
-          //   uiFontFamily: "Inter Variable",
-          //   codeFontFamily: "JetBrains Mono Variable",
-          // },
+          themes: ["github-dark-default", "github-light-default"]
+        },
+        importCodeFile: {
+          transform(code, id) {
+            if (id.endsWith(".tsx")) {
+              return code
+                .replaceAll("~/registry/", "~/components/")
+                .replaceAll("export default", "export")
+            }
+          }
         },
         packageManagers: {
           presets: {

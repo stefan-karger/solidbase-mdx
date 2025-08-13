@@ -316,3 +316,30 @@ export const docsConfig: Config = {
     }
   ]
 }
+
+export const flatConfig = () => [
+  ...docsConfig.mainNav,
+  ...docsConfig.sidebarNav.flatMap((category) => category.items)
+]
+
+export const getPrevAndNext = (curHref: string) => {
+  const allElements = flatConfig()
+  const curIdx = allElements.findIndex((el) => el.href === curHref)
+
+  let prev: NavElement | null = null
+  let next: NavElement | null = null
+
+  if (curIdx === -1) {
+    return { prev: null, next: null }
+  }
+
+  if (curIdx > 0) {
+    prev = allElements[curIdx - 1]
+  }
+
+  if (curIdx < allElements.length - 1) {
+    next = allElements[curIdx + 1]
+  }
+
+  return { prev, next }
+}

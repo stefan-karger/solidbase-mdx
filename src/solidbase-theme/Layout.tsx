@@ -1,41 +1,30 @@
 import { Show } from "solid-js"
-import { isServer } from "solid-js/web"
 import { Title } from "@solidjs/meta"
 import type { RouteSectionProps } from "@solidjs/router"
 import { useMatch } from "@solidjs/router"
 
-import { ColorModeProvider, ColorModeScript, cookieStorageManagerSSR } from "@kobalte/core"
-import { getCookie } from "vinxi/http"
+import { useThemeListener } from "@kobalte/solidbase/client"
 
 import { DocsLayout } from "~/components/docs-layout"
-import { MainHeader } from "~/components/main-header"
-
-function getServerCookies() {
-  "use server"
-  const colorMode = getCookie("kb-color-mode")
-  return colorMode ? `kb-color-mode=${colorMode}` : ""
-}
+import { SiteHeader } from "~/components/site-header"
 
 export default function (props: RouteSectionProps) {
-  const storageManager = cookieStorageManagerSSR(isServer ? getServerCookies() : document.cookie)
+  useThemeListener()
 
   const isBlock = useMatch(() => "/blocks/*")
   const isDocsPage = useMatch(() => "/docs/*")
 
   return (
     <>
-      <ColorModeScript storageType={storageManager.type} />
-      <ColorModeProvider storageManager={storageManager}>
-        <Title>SolidUI</Title>
-        <Show when={!isBlock()} fallback={props.children}>
-          <MainHeader />
-          <main class="expressive-code-overrides">
-            <Show when={isDocsPage()} fallback={props.children}>
-              <DocsLayout>{props.children}</DocsLayout>
-            </Show>
-          </main>
-        </Show>
-      </ColorModeProvider>
+      <Title>SolidUI</Title>
+      <Show fallback={props.children} when={!isBlock()}>
+        <SiteHeader />
+        <main class="expressive-code-overrides flex flex-1 flex-col">
+          <Show fallback={props.children} when={isDocsPage()}>
+            <DocsLayout>{props.children}</DocsLayout>
+          </Show>
+        </main>
+      </Show>
     </>
   )
 }

@@ -4,9 +4,11 @@
 @import "@fontsource-variable/geist";
 @import "@fontsource-variable/geist-mono";
 
+@import "~/styles/themes.css";
 @import "~/styles/expressive-code.css";
 
-@custom-variant dark (.dark &, [data-kb-theme="dark"] &);
+@custom-variant dark (.dark &, [data-theme="dark"] &);
+@custom-variant hover (&:hover);
 
 :root {
   --radius: 0.625rem;
@@ -57,7 +59,7 @@
 }
 
 .dark,
-[data-kb-theme="dark"] {
+[data-theme="dark"] {
   --background: oklch(0.141 0.005 285.823);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.21 0.006 285.885);
@@ -153,13 +155,11 @@
   --color-error: var(--error);
   --color-error-foreground: var(--error-foreground);
 
-  --font-sans:
-    "Geist Variable", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-    "Segoe UI Symbol", "Noto Color Emoji";
+  --font-sans: "Geist Variable", ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
-  --font-mono:
-    "Geist Mono Variable", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
-    "Courier New", monospace;
+  --font-mono: "Geist Mono Variable", ui-monospace, SFMono-Regular, Menlo,
+    Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 @layer base {

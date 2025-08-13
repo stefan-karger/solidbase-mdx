@@ -1,18 +1,17 @@
 import { createSignal, onMount } from "solid-js"
 import { A } from "@solidjs/router"
 
-import { IconGithub } from "~/components/icons"
-import { Button } from "~/components/ui/button"
+import { IconBrandGithub } from "~/components/icons"
+import { Button } from "~/registry/ui/button"
 
-const FALLBACK_STAR_COUNT = 1200
+const FALLBACK_STAR_COUNT = 1250
 
 async function getGithubStarCount() {
   try {
     const res = await fetch("https://ungh.cc/repos/stefan-karger/solid-ui")
     const data = await res.json()
     return data.repo?.stars ?? FALLBACK_STAR_COUNT
-  } catch (error) {
-    console.error(error)
+  } catch {
     return FALLBACK_STAR_COUNT
   }
 }
@@ -21,8 +20,8 @@ export function GitHubLink() {
   const [stars, setStars] = createSignal(FALLBACK_STAR_COUNT)
 
   onMount(async () => {
-    const stars = await getGithubStarCount()
-    setStars(stars)
+    const count = await getGithubStarCount()
+    setStars(count)
   })
 
   const beautify = () =>
@@ -31,15 +30,15 @@ export function GitHubLink() {
   return (
     <Button
       as={A}
-      href={`https://github.com/stefan-karger/solid-ui`}
-      target="_blank"
+      class="h-8 shadow-none"
+      href={"https://github.com/stefan-karger/solid-ui"}
       rel="noreferrer"
       size="sm"
+      target="_blank"
       variant="ghost"
-      class="h-8 shadow-none"
     >
       <span class="flex items-center gap-2">
-        <IconGithub />
+        <IconBrandGithub />
         <span class="text-muted-foreground text-xs tabular-nums">{beautify()}</span>
       </span>
     </Button>

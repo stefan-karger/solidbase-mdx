@@ -1,3 +1,3 @@
 export default function Blocks() {
-  return <>BLOCKS</>;
+  return "<>BLOCKS</>"
 }

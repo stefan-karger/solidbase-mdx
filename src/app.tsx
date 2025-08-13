@@ -3,7 +3,7 @@ import { FileRoutes } from "@solidjs/start/router"
 
 import { SolidBaseRoot } from "@kobalte/solidbase/client"
 
-import "~/app.css"
+import "~/styles/globals.css"
 
 export default function App() {
   return (
