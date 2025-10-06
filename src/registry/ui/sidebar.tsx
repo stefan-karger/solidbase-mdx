@@ -18,19 +18,19 @@ import { Polymorphic } from "@kobalte/core"
 import type { VariantProps } from "class-variance-authority"
 import { cva } from "class-variance-authority"
 
-import type { ButtonProps } from "~/components/ui/button"
-import { Button } from "~/components/ui/button"
-import { Separator } from "~/components/ui/separator"
+import type { ButtonProps } from "~/registry/ui/button"
+import { Button } from "~/registry/ui/button"
+import { Separator } from "~/registry/ui/separator"
 import {
   Sheet,
   SheetContent,
   SheetDescription,
   SheetHeader,
   SheetTitle
-} from "~/components/ui/sheet"
-import { Skeleton } from "~/components/ui/skeleton"
-import { TextField, TextFieldInput } from "~/components/ui/text-field"
-import { Tooltip, TooltipContent, TooltipTrigger } from "~/components/ui/tooltip"
+} from "~/registry/ui/sheet"
+import { Skeleton } from "~/registry/ui/skeleton"
+import { TextField, TextFieldInput } from "~/registry/ui/text-field"
+import { Tooltip, TooltipContent, TooltipTrigger } from "~/registry/ui/tooltip"
 import { useIsMobile } from "~/hooks/use-mobile"
 import { cn } from "~/lib/utils"
 

@@ -10,7 +10,7 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle
-} from "~/components/ui/dialog"
+} from "~/registry/ui/dialog"
 import { cn } from "~/lib/utils"
 
 const Command: Component<ParentProps<CommandPrimitive.CommandRootProps>> = (props) => {
