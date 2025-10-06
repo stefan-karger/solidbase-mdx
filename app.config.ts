@@ -14,7 +14,7 @@ export default defineConfig(
     {
       ssr: true,
       server: {
-        preset: "vercel"
+        preset: "netlify"
       },
       vite: {
         plugins: [tailwindcss()]
