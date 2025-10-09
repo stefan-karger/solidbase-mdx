@@ -66,7 +66,7 @@ export function DocsLayout(props: ParentProps) {
                     {data()?.frontmatter.description}
                   </p>
                 </div>
-                {props.children}
+                <div>{props.children}</div>
                 <div class="mx-auto hidden h-16 w-full max-w-2xl items-center justify-between gap-2 px-4 sm:flex md:px-0">
                   <Show when={pagination()?.prev}>
                     {(prev) => (

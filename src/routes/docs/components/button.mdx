@@ -5,43 +5,31 @@ description: Displays a button or a component that looks like a button.
 
 <ComponentPreview name="button" />
 
+```tsx showLineNumbers
+<Button variant="outline">Button</Button>
+<Button variant="outline" size="icon" aria-label="Submit">
+  <ArrowUpIcon />
+</Button>
+```
+
 ## Installation
 
-<Tabs>
-
-<TabsList>
-  <TabsTrigger value="cli">CLI</TabsTrigger>
-  <TabsTrigger value="manual">Manual</TabsTrigger>
-</TabsList>
-
-<TabsContent value="cli">
+### CLI
 
 ```package-exec
 solidui-cli@latest add button
 ```
 
-</TabsContent>
+### Manual
 
-<TabsContent value="manual">
-
-<Steps>
-
-<Step>Install the following dependencies:</Step>
+Install the following dependencies:
 
 ```package-install
 @kobalte/core
 ```
 
-<Step>Copy and paste the following code into your project.</Step>
+Copy and paste the following code into your project.
 
-```file="~/registry/ui/button.tsx" showLineNumbers
+```file="~/registry/ui/button.tsx" showLineNumbers title="~/components/ui/button.tsx"
 
 ```
-
-<Step>Update the import paths to match your project setup.</Step>
-
-</Steps>
-
-</TabsContent>
-
-</Tabs>
