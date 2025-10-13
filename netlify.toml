@@ -1,0 +1,6 @@
+[build]
+command = "VITE_ORIGIN=$DEPLOY_URL pnpm run build"
+publish = "dist/"
+
+[functions]
+directory = ".netlify/functions-internal/"
