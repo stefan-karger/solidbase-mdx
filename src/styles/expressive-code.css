@@ -2,6 +2,10 @@
   .expressive-code {
     @apply mt-6;
 
+    [role="tablist"] .expressive-code {
+      @apply mt-0;
+    }
+
     code {
       @apply font-mono;
     }
