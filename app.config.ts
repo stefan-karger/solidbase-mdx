@@ -14,7 +14,10 @@ export default defineConfig(
     {
       ssr: true,
       server: {
-        preset: "netlify"
+        preset: "netlify",
+        prerender: {
+          crawlLinks: true
+        }
       },
       vite: {
         plugins: [tailwindcss()]
