@@ -2,7 +2,7 @@
   .expressive-code {
     @apply mt-6;
 
-    [role="tablist"] .expressive-code {
+    [role="tabpanel"] .expressive-code {
       @apply mt-0;
     }
 
