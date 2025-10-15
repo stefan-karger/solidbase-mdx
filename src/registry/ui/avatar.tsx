@@ -16,8 +16,8 @@ const Avatar = <T extends ValidComponent = "span">(
   const [local, others] = splitProps(props as AvatarRootProps, ["class"])
   return (
     <ImagePrimitive.Root
-      data-slot="avatar"
       class={cn("relative flex size-8 shrink-0 overflow-hidden rounded-full", local.class)}
+      data-slot="avatar"
       {...others}
     />
   )
@@ -33,8 +33,8 @@ const AvatarImage = <T extends ValidComponent = "img">(
   const [local, others] = splitProps(props as AvatarImageProps, ["class"])
   return (
     <ImagePrimitive.Img
-      data-slot="avatar-image"
       class={cn("aspect-square size-full", local.class)}
+      data-slot="avatar-image"
       {...others}
     />
   )
@@ -49,8 +49,8 @@ const AvatarFallback = <T extends ValidComponent = "span">(
   const [local, others] = splitProps(props as AvatarFallbackProps, ["class"])
   return (
     <ImagePrimitive.Fallback
-      data-slot="avatar-fallback"
       class={cn("flex size-full items-center justify-center rounded-full bg-muted", local.class)}
+      data-slot="avatar-fallback"
       {...others}
     />
   )

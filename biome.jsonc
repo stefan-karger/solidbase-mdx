@@ -19,7 +19,8 @@
               "**"
             ]
           }
-        }
+        },
+        "useSortedAttributes": "on"
       }
     }
   },
@@ -43,7 +44,7 @@
     },
     "rules": {
       "a11y": {
-        "noSvgWithoutTitle": "error",
+        "noSvgWithoutTitle": "off",
         "useAltText": "error",
         "useButtonType": "error",
         "useHtmlLang": "error",

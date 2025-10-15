@@ -3,14 +3,28 @@ title: Button
 description: Displays a button or a component that looks like a button.
 ---
 
-<ComponentPreview name="button" />
+import ButtonDemo from "~/registry/examples/button-example";
 
-```tsx showLineNumbers
-<Button variant="outline">Button</Button>
-<Button variant="outline" size="icon" aria-label="Submit">
-  <ArrowUpIcon />
-</Button>
+<Tabs defaultValue="code">
+  <TabsList >
+    <TabsTrigger value="code">code</TabsTrigger>
+    <TabsTrigger value="preview">preview</TabsTrigger>
+  </TabsList>
+  <TabsContent value="code">
+
+    <ComponentPreview>
+      <ButtonDemo />
+    </ComponentPreview>
+
+  </TabsContent>
+  <TabsContent value="preview">
+
+```file="~/registry/examples/button-example" frame=none showLineNumbers
+
 ```
+
+  </TabsContent>
+</Tabs>
 
 ## Installation
 
@@ -30,6 +44,31 @@ Install the following dependencies:
 
 Copy and paste the following code into your project.
 
-```file="~/registry/ui/button.tsx" showLineNumbers title="~/components/ui/button.tsx"
+```file="~/registry/ui/button.tsx" title="~/components/ui/button.tsx" showLineNumbers
 
+```
+
+## Usage
+
+```tsx
+import { Button } from "~/components/ui/button";
+```
+
+```tsx
+<Button variant="outline">Button</Button>
+```
+
+## Cursor
+
+Tailwind v4 [switched](https://tailwindcss.com/docs/upgrade-guide#buttons-use-the-default-cursor) from `cursor: pointer` to `cursor: default` for the button component.
+
+If you want to keep the `cursor: pointer` behavior, add the following code to your CSS file:
+
+```css showLineNumbers title="globals.css"
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
 ```

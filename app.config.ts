@@ -32,7 +32,8 @@ export default defineConfig(
           transform(code, id) {
             if (id.endsWith(".tsx")) {
               return code
-                .replaceAll("~/registry/", "~/components/")
+                .replaceAll("~/registry/ui", "~/components/ui")
+                .replaceAll("~/registry/hooks", "~/hooks")
                 .replaceAll("export default", "export")
             }
           }

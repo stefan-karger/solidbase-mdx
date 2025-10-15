@@ -1,4 +1,4 @@
-import { type ComponentProps, type ParentProps, splitProps } from "solid-js"
+import { type ComponentProps, splitProps } from "solid-js"
 
 import * as T from "~/registry/ui/tabs"
 
@@ -71,12 +71,13 @@ export const pre = (props: ComponentProps<"pre">) => {
   return <pre class="no-scrollbar min-w-0 overflow-x-auto px-4 py-3.5 outline-none" {...props} />
 }
 
-export const Steps = (props: ParentProps) => {
-  return <div class="[&>h3]:step steps *:[h3]:first:!mt-0 mb-12 [counter-reset:step]" {...props} />
-}
-
-export const Step = (props: ComponentProps<"h3">) => {
-  return <h3 class="mt-8 scroll-m-32 font-heading font-medium text-xl tracking-tight" {...props} />
+export const code = (props: ComponentProps<"code">) => {
+  return (
+    <code
+      class="relative break-words rounded-md bg-muted px-[0.3rem] py-[0.2rem] font-mono text-[0.8rem] outline-none"
+      {...props}
+    />
+  )
 }
 
 export const Tabs = (props: ComponentProps<typeof T.Tabs>) => {
@@ -84,15 +85,13 @@ export const Tabs = (props: ComponentProps<typeof T.Tabs>) => {
 }
 
 export const TabsList = (props: ComponentProps<typeof T.TabsList>) => {
-  return (
-    <T.TabsList class="justify-start gap-4 rounded-none bg-transparent px-2 md:px-0" {...props} />
-  )
+  return <T.TabsList class="justify-start gap-4 rounded-none bg-transparent px-0" {...props} />
 }
 
 export const TabsTrigger = (props: ComponentProps<typeof T.TabsTrigger>) => {
   return (
     <T.TabsTrigger
-      class="px-0 text-base text-muted-foreground data-[selected=]:text-foreground data-[selected=]:shadow-none dark:data-[selected=]:border-transparent dark:data-[selected=]:bg-transparent"
+      class="rounded-none border-0 border-transparent border-b-2 bg-transparent px-0 pb-3 text-base text-muted-foreground hover:text-primary data-[selected]:border-primary data-[selected]:bg-transparent data-[selected]:text-foreground data-[selected]:shadow-none dark:data-[selected]:border-primary dark:data-[selected]:bg-transparent"
       {...props}
     />
   )
@@ -101,7 +100,7 @@ export const TabsTrigger = (props: ComponentProps<typeof T.TabsTrigger>) => {
 export const TabsContent = (props: ComponentProps<typeof T.TabsContent>) => {
   return (
     <T.TabsContent
-      class="relative bg-none [&>.steps]:mt-6 [&_h3.font-heading]:font-medium [&_h3.font-heading]:text-base *:[figure]:first:mt-0"
+      class="relative [&>.steps]:mt-6 [&_h3.font-heading]:font-medium [&_h3.font-heading]:text-base *:[figure]:first:mt-0"
       {...props}
     />
   )

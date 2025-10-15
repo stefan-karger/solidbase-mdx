@@ -12,8 +12,8 @@ import type {
 } from "@corvu/calendar"
 import CalendarPrimitive, { Root as CalendarPrimitiveRoot } from "@corvu/calendar"
 
-import { buttonVariants } from "~/registry/ui/button"
 import { cn } from "~/lib/utils"
+import { buttonVariants } from "~/registry/ui/button"
 
 const Calendar = CalendarPrimitiveRoot
 
@@ -48,21 +48,21 @@ const CalendarPrevTrigger = <T extends ValidComponent = "button">(
       {...others}
     >
       <Show
-        when={local.children}
         fallback={
           <svg
-            fill="none"
-            stroke-width="2"
-            xmlns="http://www.w3.org/2000/svg"
             class="size-4"
-            viewBox="0 0 24 24"
+            fill="none"
             stroke="currentColor"
             stroke-linecap="round"
             stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
           >
             <path d="M15 6l-6 6l6 6" />
           </svg>
         }
+        when={local.children}
       >
         {(children) => children()}
       </Show>
@@ -86,21 +86,21 @@ const CalendarNextTrigger = <T extends ValidComponent = "button">(
       {...others}
     >
       <Show
-        when={local.children}
         fallback={
           <svg
-            fill="none"
-            stroke-width="2"
-            xmlns="http://www.w3.org/2000/svg"
             class="size-4"
-            viewBox="0 0 24 24"
+            fill="none"
             stroke="currentColor"
             stroke-linecap="round"
             stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
           >
             <path d="M9 6l6 6l-6 6" />
           </svg>
         }
+        when={local.children}
       >
         {(children) => children()}
       </Show>
@@ -116,7 +116,7 @@ const CalendarHeading = <T extends ValidComponent = "h2">(
   props: DynamicProps<T, CalendarHeadingProps<T>>
 ) => {
   const [local, others] = splitProps(props as CalendarHeadingProps, ["class"])
-  return <CalendarPrimitive.Label class={cn("text-sm font-medium", local.class)} {...others} />
+  return <CalendarPrimitive.Label class={cn("font-medium text-sm", local.class)} {...others} />
 }
 
 type CalendarGridProps<T extends ValidComponent = "table"> = TableProps<T> & {
@@ -152,7 +152,7 @@ const CalendarGridHeadCell = <T extends ValidComponent = "th">(
   const [local, others] = splitProps(props as CalendarGridHeadCellProps, ["class"])
   return (
     <CalendarPrimitive.HeadCell
-      class={cn("w-8 rounded-md text-[0.8rem] font-normal text-muted-foreground", local.class)}
+      class={cn("w-8 rounded-md font-normal text-[0.8rem] text-muted-foreground", local.class)}
       {...others}
     />
   )
@@ -176,7 +176,7 @@ const CalendarGridBodyCell = <T extends ValidComponent = "td">(
   return (
     <CalendarPrimitive.Cell
       class={cn(
-        "p-0 has-data-in-range:bg-accent has-data-in-range:first:rounded-l-md has-data-in-range:last:rounded-r-md has-data-range-end:rounded-r-md has-data-range-start:rounded-l-md has-[[disabled]]:opacity-40",
+        "p-0 has-data-range-end:rounded-r-md has-data-range-start:rounded-l-md has-data-in-range:bg-accent has-[[disabled]]:opacity-40 has-data-in-range:last:rounded-r-md has-data-in-range:first:rounded-l-md",
         local.class
       )}
       {...others}
@@ -198,7 +198,7 @@ const CalendarGridBodyCellTrigger = <T extends ValidComponent = "button">(
     <CalendarPrimitive.CellTrigger
       class={cn(
         buttonVariants({ variant: "ghost" }),
-        "size-8 p-0 font-normal hover:not-data-range-start:not-data-range-end:bg-primary hover:not-data-range-start:not-data-range-end:text-primary-foreground focus-visible:bg-primary focus-visible:text-primary-foreground disabled:pointer-events-none disabled:text-muted-foreground disabled:opacity-50 aria-selected:opacity-100 data-range-end:bg-primary data-range-end:text-primary-foreground data-range-start:bg-primary data-range-start:text-primary-foreground data-today:bg-accent data-today:text-accent-foreground",
+        "size-8 p-0 font-normal hover:not-data-range-start:not-data-range-end:bg-primary hover:not-data-range-start:not-data-range-end:text-primary-foreground focus-visible:bg-primary focus-visible:text-primary-foreground disabled:pointer-events-none disabled:text-muted-foreground disabled:opacity-50 aria-selected:opacity-100 data-range-end:bg-primary data-range-start:bg-primary data-today:bg-accent data-range-end:text-primary-foreground data-range-start:text-primary-foreground data-today:text-accent-foreground",
         ctx.mode() === "single" && "data-selected:bg-primary data-selected:text-primary-foreground",
         local.class
       )}
