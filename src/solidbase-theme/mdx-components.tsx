@@ -1,7 +1,5 @@
 import { type ComponentProps, splitProps } from "solid-js"
 
-import * as T from "~/registry/ui/tabs"
-
 export const h1 = (props: ComponentProps<"h1">) => {
   return <h1 class="mt-2 scroll-m-28 font-bold font-heading text-3xl tracking-tight" {...props} />
 }
@@ -75,32 +73,6 @@ export const code = (props: ComponentProps<"code">) => {
   return (
     <code
       class="relative break-words rounded-md bg-muted px-[0.3rem] py-[0.2rem] font-mono text-[0.8rem] outline-none"
-      {...props}
-    />
-  )
-}
-
-export const Tabs = (props: ComponentProps<typeof T.Tabs>) => {
-  return <T.Tabs class="relative mt-6 w-full" {...props} />
-}
-
-export const TabsList = (props: ComponentProps<typeof T.TabsList>) => {
-  return <T.TabsList class="justify-start gap-4 rounded-none bg-transparent px-0" {...props} />
-}
-
-export const TabsTrigger = (props: ComponentProps<typeof T.TabsTrigger>) => {
-  return (
-    <T.TabsTrigger
-      class="rounded-none border-0 border-transparent border-b-2 bg-transparent px-0 pb-3 text-base text-muted-foreground hover:text-primary data-[selected]:border-primary data-[selected]:bg-transparent data-[selected]:text-foreground data-[selected]:shadow-none dark:data-[selected]:border-primary dark:data-[selected]:bg-transparent"
-      {...props}
-    />
-  )
-}
-
-export const TabsContent = (props: ComponentProps<typeof T.TabsContent>) => {
-  return (
-    <T.TabsContent
-      class="relative [&>.steps]:mt-6 [&_h3.font-heading]:font-medium [&_h3.font-heading]:text-base *:[figure]:first:mt-0"
       {...props}
     />
   )

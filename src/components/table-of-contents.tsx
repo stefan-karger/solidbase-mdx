@@ -1,4 +1,4 @@
-import { createEffect, createSignal, Index, on } from "solid-js"
+import { createEffect, createSignal, Index, on, Show } from "solid-js"
 import { isServer } from "solid-js/web"
 
 import type { TableOfContentsItemData } from "@kobalte/solidbase/client"
@@ -46,29 +46,31 @@ export function TableOfContents() {
   }
 
   return (
-    <nav aria-labelledby="on-this-page-title" class="no-scrollbar overflow-y-auto px-12">
-      <h2
-        class="sticky top-0 h-6 bg-background text-muted-foreground text-xs"
-        id="on-this-page-title"
-      >
-        On This Page
-      </h2>
-      <ul class="flex list-none flex-col gap-2 text-sm">
-        <Index each={headings()}>
-          {(section) => (
-            <li style={{ "padding-left": `${section().depth}rem` }}>
-              <a
-                class="text-[0.8rem] text-muted-foreground no-underline transition-colors hover:text-foreground data-[active=true]:text-foreground"
-                data-active={section().href === currentSection()}
-                href={section().href}
-              >
-                {section().title}
-              </a>
-            </li>
-          )}
-        </Index>
-      </ul>
-    </nav>
+    <Show when={headings().length > 0}>
+      <nav aria-labelledby="on-this-page-title" class="no-scrollbar overflow-y-auto px-12">
+        <h2
+          class="sticky top-0 h-6 bg-background text-muted-foreground text-xs"
+          id="on-this-page-title"
+        >
+          On This Page
+        </h2>
+        <ul class="flex list-none flex-col gap-2 text-sm">
+          <Index each={headings()}>
+            {(section) => (
+              <li style={{ "padding-left": `${section().depth}rem` }}>
+                <a
+                  class="text-[0.8rem] text-muted-foreground no-underline transition-colors hover:text-foreground data-[active=true]:text-foreground"
+                  data-active={section().href === currentSection()}
+                  href={section().href}
+                >
+                  {section().title}
+                </a>
+              </li>
+            )}
+          </Index>
+        </ul>
+      </nav>
+    </Show>
   )
 }
 
