@@ -1,4 +1,6 @@
-export const examples = [
+import type { Registry } from "~/registry/schema"
+
+export const examples: Registry["items"] = [
   {
     name: "button-demo",
     type: "registry:example",

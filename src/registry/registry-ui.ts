@@ -1,4 +1,6 @@
-export const ui = [
+import type { Registry } from "~/registry/schema"
+
+export const ui: Registry["items"] = [
   {
     name: "button",
     type: "registry:ui",

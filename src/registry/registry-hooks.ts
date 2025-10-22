@@ -1,4 +1,6 @@
-export const hooks = [
+import type { Registry } from "~/registry/schema"
+
+export const hooks: Registry["items"] = [
   {
     name: "use-mobile",
     type: "registry:hook",
