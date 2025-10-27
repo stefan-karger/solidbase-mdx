@@ -13,7 +13,7 @@ import type {
 import CalendarPrimitive, { Root as CalendarPrimitiveRoot } from "@corvu/calendar"
 
 import { cn } from "~/lib/utils"
-import { buttonVariants } from "~/registry/ui/button"
+import { buttonVariants } from "~/registry/v1/ui/button"
 
 const Calendar = CalendarPrimitiveRoot
 

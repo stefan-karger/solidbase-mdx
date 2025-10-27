@@ -3,9 +3,9 @@ import { A } from "@solidjs/router"
 import { GitHubLink } from "~/components/github-link"
 import { MobileNavigation } from "~/components/mobile-navigation"
 import { ModeToggle } from "~/components/mode-toggle"
-import { Separator } from "~/registry/ui/separator"
+import { Separator } from "~/registry/v1/ui/separator"
 
-import { Button } from "../registry/ui/button"
+import { Button } from "../registry/v1/ui/button"
 
 export function SiteHeader() {
   return (

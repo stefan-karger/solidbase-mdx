@@ -1,4 +1,17 @@
-import { type ComponentProps, splitProps } from "solid-js"
+import {
+  type ComponentProps,
+  children,
+  createSignal,
+  For,
+  type ParentProps,
+  Show,
+  splitProps
+} from "solid-js"
+
+import { cookieStorage, makePersisted, messageSync } from "@solid-primitives/storage"
+
+import { IconTerminal } from "~/components/icons"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/registry/v1/ui/tabs"
 
 export const h1 = (props: ComponentProps<"h1">) => {
   return <h1 class="mt-2 scroll-m-28 font-bold font-heading text-3xl tracking-tight" {...props} />
@@ -75,6 +88,131 @@ export const code = (props: ComponentProps<"code">) => {
       class="relative break-words rounded-md bg-muted px-[0.3rem] py-[0.2rem] font-mono text-[0.8rem] outline-none"
       {...props}
     />
+  )
+}
+
+export function DirectiveContainer(
+  props: {
+    type:
+      | "info"
+      | "note"
+      | "tip"
+      | "important"
+      | "warning"
+      | "danger"
+      | "caution"
+      | "details"
+      | "tab-group"
+      | "tab"
+    title?: string
+    codeGroup?: string
+    tabNames?: string
+    withTsJsToggle?: string
+  } & ParentProps
+) {
+  const _children = children(() => props.children).toArray()
+
+  if (props.type === "tab") {
+    return _children
+  }
+
+  if (props.type === "tab-group") {
+    const tabNames = props.tabNames?.split("\0")
+
+    const [openTab, setOpenTab] = makePersisted(createSignal(tabNames![0]!), {
+      name: `tab-group:${props.title}`,
+      sync: messageSync(new BroadcastChannel("tab-group")),
+      storage: cookieStorage.withOptions({
+        expires: new Date(Date.now() + 3e10)
+      })
+    })
+
+    if (props.title === "package-manager") {
+      const tabNames = props.tabNames?.split("\0")
+      return (
+        <div class="mt-6 rounded-lg bg-accent first:mt-0">
+          <Tabs class="gap-0" onChange={setOpenTab} value={openTab?.()}>
+            <div class="flex items-center gap-2 border-border/50 border-b px-3 py-1">
+              <div class="flex size-4 items-center justify-center rounded-[1px] bg-foreground opacity-70">
+                <IconTerminal class="size-3 text-white" />
+              </div>
+              <TabsList class="rounded-none bg-transparent p-0">
+                <For each={tabNames}>
+                  {(title) => (
+                    <TabsTrigger
+                      class="h-7 border border-transparent pt-0.5 data-[selected]:border-input data-[selected]:bg-accent data-[selected]:shadow-none"
+                      value={title}
+                    >
+                      {title}
+                    </TabsTrigger>
+                  )}
+                </For>
+              </TabsList>
+            </div>
+            <div class="no-scrollbar overflow-x-auto">
+              <For each={tabNames}>
+                {(title, i) => (
+                  <TabsContent
+                    class="relative mt-0 hidden data-[selected]:block"
+                    forceMount={true}
+                    value={title}
+                  >
+                    {_children[i()]}
+                  </TabsContent>
+                )}
+              </For>
+            </div>
+          </Tabs>
+        </div>
+      )
+    }
+
+    return (
+      <Tabs class="relative mt-6 w-full" onChange={setOpenTab} value={openTab?.()}>
+        <TabsList class="justify-start gap-4 rounded-none bg-transparent px-0">
+          <For each={tabNames}>
+            {(title) => (
+              <TabsTrigger
+                class="rounded-none border-0 bg-transparent px-0 pb-3 text-base text-muted-foreground hover:text-primary data-[selected]:bg-transparent data-[selected]:text-foreground data-[selected]:shadow-none dark:data-[selected]:bg-transparent dark:data-[selected]:text-foreground"
+                value={title}
+              >
+                {title}
+              </TabsTrigger>
+            )}
+          </For>
+        </TabsList>
+
+        <For each={tabNames}>
+          {(title, i) => (
+            <TabsContent
+              class="relative hidden data-[selected]:block [&>.steps]:mt-6 [&_h3.font-heading]:font-medium [&_h3.font-heading]:text-base *:[figure]:first:mt-0"
+              forceMount={true}
+              value={title}
+            >
+              {_children[i()]}
+            </TabsContent>
+          )}
+        </For>
+      </Tabs>
+    )
+  }
+
+  if (props.type === "details") {
+    return (
+      <details class="custom-container" data-custom-container="details">
+        <summary>{props.title ?? props.type}</summary>
+        {_children}
+      </details>
+    )
+  }
+
+  return (
+    <div class="custom-container" data-custom-container={props.type}>
+      <Show when={props.title !== " "}>
+        <span>{props.title ?? props.type}</span>
+      </Show>
+      {_children}
+    </div>
   )
 }
 

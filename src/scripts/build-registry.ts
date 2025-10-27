@@ -16,7 +16,7 @@ export const Index: Record<string, any> = {
 `
 
   for (const item of registry.items) {
-    const componentPath = item.files?.[0]?.path ? `~/registry/${item.files[0].path}` : ""
+    const componentPath = item.files?.[0]?.path ? `~/registry/v1/${item.files[0].path}` : ""
 
     index += `
   "${item.name}": {

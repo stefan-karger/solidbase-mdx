@@ -20,13 +20,19 @@ import { cva } from "class-variance-authority"
 
 import { useIsMobile } from "~/hooks/use-mobile"
 import { cn } from "~/lib/utils"
-import type { ButtonProps } from "~/registry/ui/button"
-import { Button } from "~/registry/ui/button"
-import { Separator } from "~/registry/ui/separator"
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "~/registry/ui/sheet"
-import { Skeleton } from "~/registry/ui/skeleton"
-import { TextField, TextFieldInput } from "~/registry/ui/text-field"
-import { Tooltip, TooltipContent, TooltipTrigger } from "~/registry/ui/tooltip"
+import type { ButtonProps } from "~/registry/v1/ui/button"
+import { Button } from "~/registry/v1/ui/button"
+import { Input } from "~/registry/v1/ui/input"
+import { Separator } from "~/registry/v1/ui/separator"
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle
+} from "~/registry/v1/ui/sheet"
+import { Skeleton } from "~/registry/v1/ui/skeleton"
+import { Tooltip, TooltipContent, TooltipTrigger } from "~/registry/v1/ui/tooltip"
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state"
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7
@@ -326,21 +332,15 @@ const SidebarInset: Component<ComponentProps<"main">> = (props) => {
   )
 }
 
-type SidebarInputProps<T extends ValidComponent = "input"> = ComponentProps<
-  typeof TextFieldInput<T>
->
-
-const SidebarInput = <T extends ValidComponent = "input">(props: SidebarInputProps<T>) => {
-  const [local, others] = splitProps(props as SidebarInputProps, ["class"])
+const SidebarInput = (props: ComponentProps<typeof Input>) => {
+  const [local, others] = splitProps(props, ["class"])
   return (
-    <TextField>
-      <TextFieldInput
-        class={cn("h-8 w-full bg-background shadow-none", local.class)}
-        data-sidebar="input"
-        data-slot="sidebar-input"
-        {...others}
-      />
-    </TextField>
+    <Input
+      class={cn("h-8 w-full bg-background shadow-none", local.class)}
+      data-sidebar="input"
+      data-slot="sidebar-input"
+      {...others}
+    />
   )
 }
 

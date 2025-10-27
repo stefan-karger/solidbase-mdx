@@ -11,7 +11,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem
-} from "~/registry/ui/sidebar"
+} from "~/registry/v1/ui/sidebar"
 
 export function MainNavigation() {
   const location = useLocation()

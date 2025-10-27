@@ -1,5 +1,5 @@
 import { IconArrowUp } from "~/components/icons"
-import { Button } from "~/registry/ui/button"
+import { Button } from "~/registry/v1/ui/button"
 
 export default function ButtonDemo() {
   return (

@@ -11,7 +11,7 @@ export const Index: Record<string, any> = {
     description: "",
     type: "registry:lib",
     registryDependencies: undefined,
-    component: lazy(() => import("~/registry/lib/utils.ts")),
+    component: lazy(() => import("~/registry/v1/lib/utils.ts")),
     files: [{
       path: "registry/lib/utils.ts",
       type: "registry:lib",
@@ -25,7 +25,7 @@ export const Index: Record<string, any> = {
     description: "",
     type: "registry:ui",
     registryDependencies: undefined,
-    component: lazy(() => import("~/registry/ui/button.tsx")),
+    component: lazy(() => import("~/registry/v1/ui/button.tsx")),
     files: [{
       path: "registry/ui/button.tsx",
       type: "registry:ui",
@@ -39,7 +39,7 @@ export const Index: Record<string, any> = {
     description: "",
     type: "registry:ui",
     registryDependencies: undefined,
-    component: lazy(() => import("~/registry/ui/checkbox.tsx")),
+    component: lazy(() => import("~/registry/v1/ui/checkbox.tsx")),
     files: [{
       path: "registry/ui/checkbox.tsx",
       type: "registry:ui",
@@ -53,7 +53,7 @@ export const Index: Record<string, any> = {
     description: "",
     type: "registry:hook",
     registryDependencies: undefined,
-    component: lazy(() => import("~/registry/hooks/use-mobile.ts")),
+    component: lazy(() => import("~/registry/v1/hooks/use-mobile.ts")),
     files: [{
       path: "registry/hooks/use-mobile.ts",
       type: "registry:hook",
@@ -67,7 +67,7 @@ export const Index: Record<string, any> = {
     description: "",
     type: "registry:example",
     registryDependencies: ["button"],
-    component: lazy(() => import("~/registry/examples/button-demo.tsx")),
+    component: lazy(() => import("~/registry/v1/examples/button-demo.tsx")),
     files: [{
       path: "registry/examples/button-demo.tsx",
       type: "registry:example",
@@ -81,7 +81,7 @@ export const Index: Record<string, any> = {
     description: "",
     type: "registry:example",
     registryDependencies: ["checkbox"],
-    component: lazy(() => import("~/registry/examples/checkbox-demo.tsx")),
+    component: lazy(() => import("~/registry/v1/examples/checkbox-demo.tsx")),
     files: [{
       path: "registry/examples/checkbox-demo.tsx",
       type: "registry:example",

@@ -2,7 +2,7 @@ import { createSignal, Show } from "solid-js"
 
 import { getThemeVariant, setTheme } from "@kobalte/solidbase/client"
 
-import { Toggle } from "~/registry/ui/toggle"
+import { Toggle } from "~/registry/v1/ui/toggle"
 
 export function ModeToggle() {
   const [pressed, setPressed] = createSignal(getThemeVariant() === "light")

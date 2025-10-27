@@ -1,5 +1,5 @@
-import { Checkbox } from "~/registry/ui/checkbox"
-import { Label } from "~/registry/ui/label"
+import { Checkbox } from "~/registry/v1/ui/checkbox"
+import { Label } from "~/registry/v1/ui/label"
 
 export default function CheckboxDemo() {
   return (

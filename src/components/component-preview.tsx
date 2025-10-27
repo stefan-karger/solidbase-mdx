@@ -24,7 +24,10 @@ export function ComponentPreview(props: ComponentProps<"div"> & { name: string }
   })
 
   return (
-    <div class="preview flex h-[450px] w-full items-center justify-center p-10" {...others}>
+    <div
+      class="preview flex h-[450px] w-full items-center justify-center rounded-lg border p-10"
+      {...others}
+    >
       <Preview />
     </div>
   )
