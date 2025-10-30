@@ -90,4 +90,18 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "tooltip-demo": {
+    name: "tooltip-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["tooltip"],
+    component: lazy(() => import("~/registry/v1/examples/tooltip-demo.tsx")),
+    files: [{
+      path: "registry/examples/tooltip-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
 }

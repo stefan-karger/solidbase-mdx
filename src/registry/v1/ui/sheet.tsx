@@ -36,11 +36,11 @@ const SheetOverlay = <T extends ValidComponent = "div">(
   const [local, others] = splitProps(props as SheetOverlayProps, ["class"])
   return (
     <SheetPrimitive.Overlay
-      data-slot="sheet-overlay"
       class={cn(
-        "fixed inset-0 z-50 bg-black/50 data-[closed=]:animate-out data-[closed=]:fade-out-0 data-[expanded=]:animate-in data-[expanded=]:fade-in-0",
+        "data-[closed=]:fade-out-0 data-[expanded=]:fade-in-0 fixed inset-0 z-50 bg-black/50 data-[closed=]:animate-out data-[expanded=]:animate-in",
         local.class
       )}
+      data-slot="sheet-overlay"
       {...others}
     />
   )
@@ -61,32 +61,32 @@ const SheetContent = <T extends ValidComponent = "div">(
     <SheetPortal>
       <SheetOverlay />
       <SheetPrimitive.Content
-        data-slot="sheet-content"
         class={cn(
-          "fixed z-50 flex flex-col gap-4 bg-background shadow-lg transition ease-in-out data-[closed=]:animate-out data-[closed=]:duration-300 data-[expanded=]:animate-in data-[expanded=]:duration-500",
+          "fixed z-50 flex flex-col gap-4 bg-background shadow-lg transition ease-in-out data-[closed=]:animate-out data-[expanded=]:animate-in data-[closed=]:duration-300 data-[expanded=]:duration-500",
           local.side === "right" &&
-            "inset-y-0 right-0 h-full w-3/4 border-l data-[closed=]:slide-out-to-right data-[expanded=]:slide-in-from-right sm:max-w-sm",
+            "data-[closed=]:slide-out-to-right data-[expanded=]:slide-in-from-right inset-y-0 right-0 h-full w-3/4 border-l sm:max-w-sm",
           local.side === "left" &&
-            "inset-y-0 left-0 h-full w-3/4 border-r data-[closed=]:slide-out-to-left data-[expanded=]:slide-in-from-left sm:max-w-sm",
+            "data-[closed=]:slide-out-to-left data-[expanded=]:slide-in-from-left inset-y-0 left-0 h-full w-3/4 border-r sm:max-w-sm",
           local.side === "top" &&
-            "inset-x-0 top-0 h-auto border-b data-[closed=]:slide-out-to-top data-[expanded=]:slide-in-from-top",
+            "data-[closed=]:slide-out-to-top data-[expanded=]:slide-in-from-top inset-x-0 top-0 h-auto border-b",
           local.side === "bottom" &&
-            "inset-x-0 bottom-0 h-auto border-t data-[closed=]:slide-out-to-bottom data-[expanded=]:slide-in-from-bottom",
+            "data-[closed=]:slide-out-to-bottom data-[expanded=]:slide-in-from-bottom inset-x-0 bottom-0 h-auto border-t",
           local.class
         )}
+        data-slot="sheet-content"
         {...others}
       >
         {local.children}
-        <SheetClose class="absolute top-4 right-4 rounded-xs opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none data-[state=open]:bg-secondary">
+        <SheetClose class="absolute top-4 right-4 rounded-xs opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-hidden focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary">
           <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
+            class="size-4"
             fill="none"
             stroke="currentColor"
-            stroke-width="2"
             stroke-linecap="round"
             stroke-linejoin="round"
-            class="size-4"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
           >
             <path d="M18 6l-12 12" />
             <path d="M6 6l12 12" />
@@ -102,8 +102,8 @@ const SheetHeader: Component<ComponentProps<"div">> = (props) => {
   const [local, others] = splitProps(props, ["class"])
   return (
     <div
-      data-slot="sheet-header"
       class={cn("flex flex-col gap-1.5 p-4", local.class)}
+      data-slot="sheet-header"
       {...others}
     />
   )
@@ -113,8 +113,8 @@ const SheetFooter: Component<ComponentProps<"div">> = (props) => {
   const [local, others] = splitProps(props, ["class"])
   return (
     <div
-      data-slot="sheet-footer"
       class={cn("mt-auto flex flex-col gap-2 p-4", local.class)}
+      data-slot="sheet-footer"
       {...others}
     />
   )
@@ -142,7 +142,7 @@ const SheetDescription = <T extends ValidComponent = "p">(
   const [local, others] = splitProps(props as SheetDescriptionProps, ["class"])
   return (
     <SheetPrimitive.Description
-      class={cn("text-sm text-muted-foreground", local.class)}
+      class={cn("text-muted-foreground text-sm", local.class)}
       {...others}
     />
   )

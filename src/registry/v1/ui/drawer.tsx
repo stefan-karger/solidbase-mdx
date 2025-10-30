@@ -39,11 +39,11 @@ const DrawerOverlay = <T extends ValidComponent = "div">(
   const drawerContext = DrawerPrimitive.useContext()
   return (
     <DrawerPrimitive.Overlay
-      data-slot="drawer-overlay"
       class={cn(
         "fixed inset-0 z-50 data-[transitioning]:transition-colors data-[transitioning]:duration-300",
         local.class
       )}
+      data-slot="drawer-overlay"
       style={{
         "background-color": `rgb(0 0 0 / ${0.8 * drawerContext.openPercentage()})`
       }}
@@ -65,7 +65,6 @@ const DrawerContent = <T extends ValidComponent = "div">(
     <DrawerPortal>
       <DrawerOverlay />
       <DrawerPrimitive.Content
-        data-slot="drawer-content"
         class={cn(
           "group/drawer-content fixed z-50 flex h-auto flex-col bg-background before:absolute before:bg-inherit after:absolute after:bg-inherit data-[transitioning]:transition-transform data-[transitioning]:duration-300 md:select-none",
           "data-[side=top]:inset-x-0 data-[side=top]:top-0 data-[side=top]:mb-24 data-[side=top]:max-h-[80vh] data-[side=top]:rounded-b-lg data-[side=top]:border-b data-[side=top]:before:inset-x-0 data-[side=top]:before:bottom-full data-[side=top]:before:h-1/2",
@@ -74,6 +73,7 @@ const DrawerContent = <T extends ValidComponent = "div">(
           "data-[side=left]:inset-y-0 data-[side=left]:left-0 data-[side=left]:w-3/4 data-[side=left]:border-r data-[side=left]:before:inset-y-0 data-[side=left]:before:right-full data-[side=left]:before:w-1/2 data-[side=left]:sm:max-w-sm",
           local.class
         )}
+        data-slot="drawer-content"
         {...others}
       >
         <div class="mx-auto mt-4 hidden h-2 w-[100px] shrink-0 rounded-full bg-muted group-data-[side=bottom]/drawer-content:block" />
@@ -86,7 +86,7 @@ const DrawerContent = <T extends ValidComponent = "div">(
 const DrawerHeader: Component<ComponentProps<"div">> = (props) => {
   const [, rest] = splitProps(props, ["class"])
   return (
-    <div data-slot="drawer-header" class={cn("flex flex-col gap-1.5 p-4", props.class)} {...rest} />
+    <div class={cn("flex flex-col gap-1.5 p-4", props.class)} data-slot="drawer-header" {...rest} />
   )
 }
 
@@ -94,8 +94,8 @@ const DrawerFooter: Component<ComponentProps<"div">> = (props) => {
   const [, rest] = splitProps(props, ["class"])
   return (
     <div
-      data-slot="drawer-footer"
       class={cn("mt-auto flex flex-col gap-2 p-4", props.class)}
+      data-slot="drawer-footer"
       {...rest}
     />
   )
@@ -109,8 +109,8 @@ const DrawerTitle = <T extends ValidComponent = "div">(
   const [, rest] = splitProps(props as DrawerTitleProps, ["class"])
   return (
     <DrawerPrimitive.Label
-      data-slot="drawer-title"
       class={cn("font-semibold text-foreground", props.class)}
+      data-slot="drawer-title"
       {...rest}
     />
   )
@@ -126,8 +126,8 @@ const DrawerDescription = <T extends ValidComponent = "div">(
   const [, rest] = splitProps(props as DrawerDescriptionProps, ["class"])
   return (
     <DrawerPrimitive.Description
+      class={cn("text-muted-foreground text-sm", props.class)}
       data-slot="drawer-description"
-      class={cn("text-sm text-muted-foreground", props.class)}
       {...rest}
     />
   )

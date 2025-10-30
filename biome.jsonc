@@ -52,7 +52,8 @@
         "useValidAriaRole": "error",
         "useValidAriaValues": "error",
         "useValidAutocomplete": "error",
-        "useValidLang": "error"
+        "useValidLang": "error",
+        "noLabelWithoutControl": "warn" // just for label component
       },
       "nursery": {
         "useSortedClasses": {

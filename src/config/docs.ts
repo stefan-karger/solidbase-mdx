@@ -42,6 +42,10 @@ export const docsConfig: Config = {
         {
           title: "Checkbox",
           href: "/docs/components/checkbox"
+        },
+        {
+          title: "Tooltip",
+          href: "/docs/components/tooltip"
         }
       ]
     }

@@ -217,3 +217,4 @@ export function DirectiveContainer(
 }
 
 export { ComponentPreview } from "~/components/component-preview"
+export { ComponentsList } from "~/components/components-list"

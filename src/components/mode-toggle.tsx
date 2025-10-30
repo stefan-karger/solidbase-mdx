@@ -1,62 +1,36 @@
-import { createSignal, Show } from "solid-js"
-
 import { getThemeVariant, setTheme } from "@kobalte/solidbase/client"
 
-import { Toggle } from "~/registry/v1/ui/toggle"
+import { Button } from "~/registry/v1/ui/button"
 
 export function ModeToggle() {
-  const [pressed, setPressed] = createSignal(getThemeVariant() === "light")
+  const toggleTheme = () => setTheme(getThemeVariant() === "dark" ? "light" : "dark")
 
   return (
-    <Toggle
-      onChange={(newPressed) => {
-        setTheme(newPressed ? "light" : "dark")
-        setPressed(newPressed)
-      }}
-      pressed={pressed()}
+    <Button
+      class="group/toggle extend-touch-target size-8"
+      onClick={toggleTheme}
+      size="icon"
+      title="Toggle theme"
+      variant="ghost"
     >
-      {(state) => (
-        <Show
-          fallback={
-            <svg
-              class="size-4.5"
-              fill="none"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <title>Dark</title>
-              <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
-            </svg>
-          }
-          when={state.pressed()}
-        >
-          <svg
-            class="size-4.5"
-            fill="none"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <title>Light</title>
-            <path d="M14.828 14.828a4 4 0 1 0 -5.656 -5.656a4 4 0 0 0 5.656 5.656z" />
-            <path d="M6.343 17.657l-1.414 1.414" />
-            <path d="M6.343 6.343l-1.414 -1.414" />
-            <path d="M17.657 6.343l1.414 -1.414" />
-            <path d="M17.657 17.657l1.414 1.414" />
-            <path d="M4 12h-2" />
-            <path d="M12 4v-2" />
-            <path d="M20 12h2" />
-            <path d="M12 20v2" />
-          </svg>
-        </Show>
-      )}
-    </Toggle>
+      <svg
+        class="size-4.5"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+        <path d="M12 3l0 18" />
+        <path d="M12 9l4.65 -4.65" />
+        <path d="M12 14.3l7.37 -7.37" />
+        <path d="M12 19.6l8.85 -8.85" />
+      </svg>
+    </Button>
   )
 }

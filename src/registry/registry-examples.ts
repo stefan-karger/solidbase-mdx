@@ -22,5 +22,16 @@ export const examples: Registry["items"] = [
         type: "registry:example"
       }
     ]
+  },
+  {
+    name: "tooltip-demo",
+    type: "registry:example",
+    registryDependencies: ["tooltip"],
+    files: [
+      {
+        path: "examples/tooltip-demo.tsx",
+        type: "registry:example"
+      }
+    ]
   }
 ]
