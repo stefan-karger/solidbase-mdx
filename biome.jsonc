@@ -53,7 +53,8 @@
         "useValidAriaValues": "error",
         "useValidAutocomplete": "error",
         "useValidLang": "error",
-        "noLabelWithoutControl": "warn" // just for label component
+        "noLabelWithoutControl": "warn", // just for label component
+        "useSemanticElements": "warn" // for field component
       },
       "nursery": {
         "useSortedClasses": {

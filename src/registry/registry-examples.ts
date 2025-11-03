@@ -24,6 +24,28 @@ export const examples: Registry["items"] = [
     ]
   },
   {
+    name: "field-demo",
+    type: "registry:example",
+    registryDependencies: ["field"],
+    files: [
+      {
+        path: "examples/field-demo.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "select-demo",
+    type: "registry:example",
+    registryDependencies: ["select"],
+    files: [
+      {
+        path: "examples/select-demo.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
     name: "tooltip-demo",
     type: "registry:example",
     registryDependencies: ["tooltip"],

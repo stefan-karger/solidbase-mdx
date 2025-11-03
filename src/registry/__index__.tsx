@@ -48,6 +48,34 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "field": {
+    name: "field",
+    description: "",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    component: lazy(() => import("~/registry/v1/ui/field.tsx")),
+    files: [{
+      path: "registry/ui/field.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "select": {
+    name: "select",
+    description: "",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    component: lazy(() => import("~/registry/v1/ui/select.tsx")),
+    files: [{
+      path: "registry/ui/select.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
   "use-mobile": {
     name: "use-mobile",
     description: "",
@@ -84,6 +112,34 @@ export const Index: Record<string, any> = {
     component: lazy(() => import("~/registry/v1/examples/checkbox-demo.tsx")),
     files: [{
       path: "registry/examples/checkbox-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "field-demo": {
+    name: "field-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["field"],
+    component: lazy(() => import("~/registry/v1/examples/field-demo.tsx")),
+    files: [{
+      path: "registry/examples/field-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "select-demo": {
+    name: "select-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["select"],
+    component: lazy(() => import("~/registry/v1/examples/select-demo.tsx")),
+    files: [{
+      path: "registry/examples/select-demo.tsx",
       type: "registry:example",
       target: ""
     }],
