@@ -78,6 +78,39 @@ export const hr = (props: ComponentProps<"hr">) => {
   return <hr class="my-4 md:my-8" {...props} />
 }
 
+export const table = (props: ComponentProps<"table">) => {
+  return (
+    <div class="no-scrollbar my-6 w-full overflow-y-auto rounded-lg border">
+      <table
+        class="relative w-full overflow-hidden border-none text-sm [&_tbody_tr:last-child]:border-b-0"
+        {...props}
+      />
+    </div>
+  )
+}
+
+export const tr = (props: ComponentProps<"tr">) => {
+  return <tr class="m-0 border-b" {...props} />
+}
+
+export const th = (props: ComponentProps<"th">) => {
+  return (
+    <th
+      class="px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right"
+      {...props}
+    />
+  )
+}
+
+export const td = (props: ComponentProps<"td">) => {
+  return (
+    <td
+      class="whitespace-nowrap px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right"
+      {...props}
+    />
+  )
+}
+
 export const pre = (props: ComponentProps<"pre">) => {
   return <pre class="no-scrollbar min-w-0 overflow-x-auto px-4 py-3.5 outline-none" {...props} />
 }
