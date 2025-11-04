@@ -24,9 +24,20 @@ export const ui: Registry["items"] = [
     ]
   },
   {
-    name: "field",
+    name: "dropdown-menu",
     type: "registry:ui",
     dependencies: ["@kobalte/core"],
+    files: [
+      {
+        path: "ui/dropdown-menu.tsx",
+        type: "registry:ui"
+      }
+    ]
+  },
+  {
+    name: "field",
+    type: "registry:ui",
+    registryDependencies: ["label", "separator"],
     files: [
       {
         path: "ui/field.tsx",

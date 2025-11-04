@@ -48,11 +48,25 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "dropdown-menu": {
+    name: "dropdown-menu",
+    description: "",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    component: lazy(() => import("~/registry/v1/ui/dropdown-menu.tsx")),
+    files: [{
+      path: "registry/ui/dropdown-menu.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
   "field": {
     name: "field",
     description: "",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["label","separator"],
     component: lazy(() => import("~/registry/v1/ui/field.tsx")),
     files: [{
       path: "registry/ui/field.tsx",
@@ -112,6 +126,62 @@ export const Index: Record<string, any> = {
     component: lazy(() => import("~/registry/v1/examples/checkbox-demo.tsx")),
     files: [{
       path: "registry/examples/checkbox-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "dropdown-menu-checkboxes": {
+    name: "dropdown-menu-checkboxes",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["dropdown-menu"],
+    component: lazy(() => import("~/registry/v1/examples/dropdown-menu-checkboxes.tsx")),
+    files: [{
+      path: "registry/examples/dropdown-menu-checkboxes.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "dropdown-menu-demo": {
+    name: "dropdown-menu-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["dropdown-menu"],
+    component: lazy(() => import("~/registry/v1/examples/dropdown-menu-demo.tsx")),
+    files: [{
+      path: "registry/examples/dropdown-menu-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "dropdown-menu-dialog": {
+    name: "dropdown-menu-dialog",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["dropdown-menu"],
+    component: lazy(() => import("~/registry/v1/examples/dropdown-menu-dialog.tsx")),
+    files: [{
+      path: "registry/examples/dropdown-menu-dialog.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "dropdown-menu-radio-group": {
+    name: "dropdown-menu-radio-group",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["dropdown-menu"],
+    component: lazy(() => import("~/registry/v1/examples/dropdown-menu-radio-group.tsx")),
+    files: [{
+      path: "registry/examples/dropdown-menu-radio-group.tsx",
       type: "registry:example",
       target: ""
     }],

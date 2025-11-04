@@ -1,0 +1,133 @@
+---
+title: Dropdown Menu
+description: Displays a menu to the user — such as a set of actions or functions — triggered by a button.
+---
+
+::::tab-group[preview]
+:::tab[Preview]
+
+<ComponentPreview name="dropdown-menu-demo" />
+
+:::
+:::tab[Code]
+
+```file="~/registry/v1/examples/dropdown-menu-demo" frame=none showLineNumbers
+
+```
+
+:::
+::::
+
+## Installation
+
+### CLI
+
+```package-exec
+solidui-cli@latest add dropdown-menu
+```
+
+### Manual
+
+Install the following dependencies:
+
+```package-install
+@kobalte/core
+```
+
+Copy and paste the following code into your project.
+
+```file="~/registry/v1/ui/dropdown-menu.tsx" showLineNumbers
+
+```
+
+## Usage
+
+```tsx showLineNumbers
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "~/components/ui/dropdown-menu";
+```
+
+```tsx showLineNumbers
+<DropdownMenu>
+  <DropdownMenuTrigger>Open</DropdownMenuTrigger>
+  <DropdownMenuContent>
+    <DropdownMenuLabel>My Account</DropdownMenuLabel>
+    <DropdownMenuSeparator />
+    <DropdownMenuItem>Profile</DropdownMenuItem>
+    <DropdownMenuItem>Billing</DropdownMenuItem>
+    <DropdownMenuItem>Team</DropdownMenuItem>
+    <DropdownMenuItem>Subscription</DropdownMenuItem>
+  </DropdownMenuContent>
+</DropdownMenu>
+```
+
+## Examples
+
+### Checkboxes
+
+::::tab-group[preview]
+:::tab[Preview]
+
+<ComponentPreview name="dropdown-menu-checkboxes" />
+
+:::
+:::tab[Code]
+
+```file="~/registry/v1/examples/dropdown-menu-checkboxes" frame=none showLineNumbers
+
+```
+
+:::
+::::
+
+### Radio Group
+
+::::tab-group[preview]
+:::tab[Preview]
+
+<ComponentPreview name="dropdown-menu-radio-group" />
+
+:::
+:::tab[Code]
+
+```file="~/registry/v1/examples/dropdown-menu-radio-group" frame=none showLineNumbers
+
+```
+
+:::
+::::
+
+### Dialog
+
+This example shows how to open a dialog from a dropdown menu.
+
+Use `modal={false}` on the `DropdownMenu` component.
+
+```tsx showLineNumbers
+<DropdownMenu modal={false}>
+  <DropdownMenuTrigger as={Button<"button">} variant="outline">
+    Actions
+  </DropdownMenuTrigger>
+</DropdownMenu>
+```
+
+::::tab-group[preview]
+:::tab[Preview]
+
+<ComponentPreview name="dropdown-menu-dialog" />
+
+:::
+:::tab[Code]
+
+```file="~/registry/v1/examples/dropdown-menu-dialog" frame=none showLineNumbers
+
+```
+
+:::
+::::
