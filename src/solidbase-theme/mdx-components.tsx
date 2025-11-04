@@ -163,11 +163,11 @@ export function DirectiveContainer(
     if (props.title === "package-manager") {
       const tabNames = props.tabNames?.split("\0")
       return (
-        <div class="mt-6 rounded-lg bg-accent first:mt-0">
+        <div class="mt-6 rounded-lg bg-accent first:mt-0 dark:bg-zinc-900">
           <Tabs class="gap-0" onChange={setOpenTab} value={openTab?.()}>
             <div class="flex items-center gap-2 border-border/50 border-b px-3 py-1">
               <div class="flex size-4 items-center justify-center rounded-[1px] bg-foreground opacity-70">
-                <IconTerminal class="size-3 text-white" />
+                <IconTerminal class="size-3 text-white dark:text-black" />
               </div>
               <TabsList class="rounded-none bg-transparent p-0">
                 <For each={tabNames}>
