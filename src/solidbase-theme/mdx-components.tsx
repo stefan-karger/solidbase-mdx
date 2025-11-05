@@ -1,4 +1,5 @@
 import {
+  Component,
   type ComponentProps,
   children,
   createSignal,
@@ -124,6 +125,14 @@ export const code = (props: ComponentProps<"code">) => {
   )
 }
 
+export const Step = (props: ComponentProps<"h3">) => (
+  <h3 class="mt-8 scroll-m-32 font-heading font-medium text-xl tracking-tight" {...props} />
+)
+
+export const Steps = (props: ComponentProps<"div">) => (
+  <div class="[&>h3]:step steps *:[h3]:first:!mt-0 mb-12 [counter-reset:step]" {...props} />
+)
+
 export function DirectiveContainer(
   props: {
     type:
@@ -218,7 +227,7 @@ export function DirectiveContainer(
         <For each={tabNames}>
           {(title, i) => (
             <TabsContent
-              class="relative hidden data-[selected]:block [&>.steps]:mt-6 [&_h3.font-heading]:font-medium [&_h3.font-heading]:text-base *:[figure]:first:mt-0"
+              class="[&_pre]:!min-h-[450px] relative hidden data-[selected]:block [&>.steps]:mt-6 [&_h3.font-heading]:font-medium [&_h3.font-heading]:text-base *:[figure]:first:mt-0"
               forceMount={true}
               value={title}
             >
