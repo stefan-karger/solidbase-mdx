@@ -7,7 +7,7 @@
 @import "~/styles/themes.css";
 @import "~/styles/expressive-code.css";
 
-@custom-variant dark (.dark &, [data-theme="dark"] &);
+@custom-variant dark (.dark &, [data-theme*="dark"] &);
 @custom-variant hover (&:hover);
 
 :root {
