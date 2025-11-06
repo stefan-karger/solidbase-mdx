@@ -46,6 +46,17 @@ export const examples: Registry["items"] = [
     ]
   },
   {
+    name: "button-group-demo",
+    type: "registry:example",
+    registryDependencies: ["button", "button-group", "dropdown-menu"],
+    files: [
+      {
+        path: "examples/button-group-demo.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
     name: "button-icon",
     type: "registry:example",
     registryDependencies: ["button"],
@@ -145,6 +156,17 @@ export const examples: Registry["items"] = [
     ]
   },
   {
+    name: "checkbox-demo",
+    type: "registry:example",
+    registryDependencies: ["checkbox"],
+    files: [
+      {
+        path: "examples/checkbox-demo.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
     name: "dropdown-menu-demo",
     type: "registry:example",
     registryDependencies: ["dropdown-menu"],
@@ -184,6 +206,17 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "examples/field-demo.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "input-group-demo",
+    type: "registry:example",
+    registryDependencies: ["input-group"],
+    files: [
+      {
+        path: "examples/input-group-demo.tsx",
         type: "registry:example"
       }
     ]

@@ -53,8 +53,10 @@
         "useValidAriaValues": "error",
         "useValidAutocomplete": "error",
         "useValidLang": "error",
-        "noLabelWithoutControl": "warn", // just for label component
-        "useSemanticElements": "warn" // for field component
+        //component related stuff
+        "noLabelWithoutControl": "off", // label component
+        "useSemanticElements": "off", // field component & more
+        "useKeyWithClickEvents": "off" // input-group component
       },
       "nursery": {
         "useSortedClasses": {

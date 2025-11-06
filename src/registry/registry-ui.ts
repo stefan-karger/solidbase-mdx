@@ -13,6 +13,18 @@ export const ui: Registry["items"] = [
     ]
   },
   {
+    name: "button-group",
+    type: "registry:ui",
+    dependencies: ["@kobalte/core"],
+    registryDependencies: ["button", "separator"],
+    files: [
+      {
+        path: "ui/button-group.tsx",
+        type: "registry:ui"
+      }
+    ]
+  },
+  {
     name: "checkbox",
     type: "registry:ui",
     dependencies: ["@kobalte/core"],
@@ -41,6 +53,27 @@ export const ui: Registry["items"] = [
     files: [
       {
         path: "ui/field.tsx",
+        type: "registry:ui"
+      }
+    ]
+  },
+  {
+    name: "input",
+    type: "registry:ui",
+    files: [
+      {
+        path: "ui/input.tsx",
+        type: "registry:ui"
+      }
+    ]
+  },
+  {
+    name: "input-group",
+    type: "registry:ui",
+    registryDependencies: ["button", "input", "textarea"],
+    files: [
+      {
+        path: "ui/input-group.tsx",
         type: "registry:ui"
       }
     ]

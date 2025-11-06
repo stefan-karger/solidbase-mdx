@@ -43,7 +43,7 @@ export default function DropdownMenuDemo() {
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem>Team</DropdownMenuItem>
-          <DropdownMenuSub>
+          <DropdownMenuSub overlap>
             <DropdownMenuSubTrigger>Invite users</DropdownMenuSubTrigger>
             <DropdownMenuPortal>
               <DropdownMenuSubContent>

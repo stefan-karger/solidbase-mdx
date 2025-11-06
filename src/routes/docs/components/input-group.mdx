@@ -1,0 +1,67 @@
+---
+title: Input Group
+description: Display additional information or actions to an input or textarea.
+---
+
+::::tab-group[preview]
+:::tab[Preview]
+
+<ComponentPreview name="input-group-demo" />
+
+:::
+
+:::tab[Code]
+
+```file="~/registry/v1/examples/input-group-demo" frame=none showLineNumbers
+
+```
+
+:::
+::::
+
+## Installation
+
+### CLI
+
+```package-exec
+solidui-cli@latest add input-group
+```
+
+### Manual
+
+Install the following dependencies:
+
+```package-install
+@kobalte/core
+```
+
+Copy and paste the following code into your project.
+
+```file="~/registry/v1/ui/input-group.tsx" showLineNumbers
+
+```
+
+## Usage
+
+```tsx
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupInput,
+  InputGroupText,
+  InputGroupTextarea,
+} from "~/components/ui/input-group";
+```
+
+```tsx
+<InputGroup>
+  <InputGroupInput placeholder="Search..." />
+  <InputGroupAddon>
+    <SearchIcon />
+  </InputGroupAddon>
+  <InputGroupAddon align="inline-end">
+    <InputGroupButton>Search</InputGroupButton>
+  </InputGroupAddon>
+</InputGroup>
+```

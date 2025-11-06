@@ -34,6 +34,20 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "button-group": {
+    name: "button-group",
+    description: "",
+    type: "registry:ui",
+    registryDependencies: ["button","separator"],
+    component: lazy(() => import("~/registry/v1/ui/button-group.tsx")),
+    files: [{
+      path: "registry/ui/button-group.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
   "checkbox": {
     name: "checkbox",
     description: "",
@@ -70,6 +84,34 @@ export const Index: Record<string, any> = {
     component: lazy(() => import("~/registry/v1/ui/field.tsx")),
     files: [{
       path: "registry/ui/field.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "input": {
+    name: "input",
+    description: "",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    component: lazy(() => import("~/registry/v1/ui/input.tsx")),
+    files: [{
+      path: "registry/ui/input.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "input-group": {
+    name: "input-group",
+    description: "",
+    type: "registry:ui",
+    registryDependencies: ["button","input","textarea"],
+    component: lazy(() => import("~/registry/v1/ui/input-group.tsx")),
+    files: [{
+      path: "registry/ui/input-group.tsx",
       type: "registry:ui",
       target: ""
     }],
@@ -154,6 +196,20 @@ export const Index: Record<string, any> = {
     component: lazy(() => import("~/registry/v1/examples/button-ghost.tsx")),
     files: [{
       path: "registry/examples/button-ghost.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "button-group-demo": {
+    name: "button-group-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","button-group","dropdown-menu"],
+    component: lazy(() => import("~/registry/v1/examples/button-group-demo.tsx")),
+    files: [{
+      path: "registry/examples/button-group-demo.tsx",
       type: "registry:example",
       target: ""
     }],
@@ -286,6 +342,20 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "checkbox-demo": {
+    name: "checkbox-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["checkbox"],
+    component: lazy(() => import("~/registry/v1/examples/checkbox-demo.tsx")),
+    files: [{
+      path: "registry/examples/checkbox-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
   "dropdown-menu-demo": {
     name: "dropdown-menu-demo",
     description: "",
@@ -336,6 +406,20 @@ export const Index: Record<string, any> = {
     component: lazy(() => import("~/registry/v1/examples/field-demo.tsx")),
     files: [{
       path: "registry/examples/field-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "input-group-demo": {
+    name: "input-group-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["input-group"],
+    component: lazy(() => import("~/registry/v1/examples/input-group-demo.tsx")),
+    files: [{
+      path: "registry/examples/input-group-demo.tsx",
       type: "registry:example",
       target: ""
     }],
