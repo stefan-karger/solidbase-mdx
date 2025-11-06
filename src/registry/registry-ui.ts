@@ -79,12 +79,34 @@ export const ui: Registry["items"] = [
     ]
   },
   {
+    name: "radio-group",
+    type: "registry:ui",
+    dependencies: ["@kobalte/core"],
+    files: [
+      {
+        path: "ui/radio-group.tsx",
+        type: "registry:ui"
+      }
+    ]
+  },
+  {
     name: "select",
     type: "registry:ui",
     dependencies: ["@kobalte/core"],
     files: [
       {
         path: "ui/select.tsx",
+        type: "registry:ui"
+      }
+    ]
+  },
+  {
+    name: "slider",
+    type: "registry:ui",
+    dependencies: ["@kobalte/core"],
+    files: [
+      {
+        path: "ui/slider.tsx",
         type: "registry:ui"
       }
     ]

@@ -56,8 +56,16 @@ export const docsConfig: Config = {
           href: "/docs/components/input-group"
         },
         {
+          title: "Radio Group",
+          href: "/docs/components/radio-group"
+        },
+        {
           title: "Select",
           href: "/docs/components/select"
+        },
+        {
+          title: "Slider",
+          href: "/docs/components/slider"
         },
         {
           title: "Tooltip",

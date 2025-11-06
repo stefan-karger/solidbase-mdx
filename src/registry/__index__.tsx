@@ -118,6 +118,20 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "radio-group": {
+    name: "radio-group",
+    description: "",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    component: lazy(() => import("~/registry/v1/ui/radio-group.tsx")),
+    files: [{
+      path: "registry/ui/radio-group.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
   "select": {
     name: "select",
     description: "",
@@ -126,6 +140,20 @@ export const Index: Record<string, any> = {
     component: lazy(() => import("~/registry/v1/ui/select.tsx")),
     files: [{
       path: "registry/ui/select.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "slider": {
+    name: "slider",
+    description: "",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    component: lazy(() => import("~/registry/v1/ui/slider.tsx")),
+    files: [{
+      path: "registry/ui/slider.tsx",
       type: "registry:ui",
       target: ""
     }],
@@ -426,6 +454,20 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "radio-group-demo": {
+    name: "radio-group-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["radio-group","label"],
+    component: lazy(() => import("~/registry/v1/examples/radio-group-demo.tsx")),
+    files: [{
+      path: "registry/examples/radio-group-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
   "select-demo": {
     name: "select-demo",
     description: "",
@@ -434,6 +476,20 @@ export const Index: Record<string, any> = {
     component: lazy(() => import("~/registry/v1/examples/select-demo.tsx")),
     files: [{
       path: "registry/examples/select-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "slider-demo": {
+    name: "slider-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["slider"],
+    component: lazy(() => import("~/registry/v1/examples/slider-demo.tsx")),
+    files: [{
+      path: "registry/examples/slider-demo.tsx",
       type: "registry:example",
       target: ""
     }],

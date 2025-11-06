@@ -222,12 +222,34 @@ export const examples: Registry["items"] = [
     ]
   },
   {
+    name: "radio-group-demo",
+    type: "registry:example",
+    registryDependencies: ["radio-group", "label"],
+    files: [
+      {
+        path: "examples/radio-group-demo.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
     name: "select-demo",
     type: "registry:example",
     registryDependencies: ["select"],
     files: [
       {
         path: "examples/select-demo.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "slider-demo",
+    type: "registry:example",
+    registryDependencies: ["slider"],
+    files: [
+      {
+        path: "examples/slider-demo.tsx",
         type: "registry:example"
       }
     ]
