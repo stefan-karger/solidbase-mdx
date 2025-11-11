@@ -19,6 +19,287 @@ description: Combine labels, controls, and help text to compose accessible form 
 :::
 ::::
 
+## Usage
+
+```tsx showLineNumbers
+import {
+  Field,
+  FieldContent,
+  FieldDescription,
+  FieldError,
+  FieldGroup,
+  FieldLabel,
+  FieldLegend,
+  FieldSeparator,
+  FieldSet,
+  FieldTitle,
+} from "~/components/ui/field";
+```
+
+```tsx showLineNumbers
+<FieldSet>
+  <FieldLegend>Profile</FieldLegend>
+  <FieldDescription>This appears on invoices and emails.</FieldDescription>
+  <FieldGroup>
+    <Field>
+      <FieldLabel for="name">Full name</FieldLabel>
+      <Input id="name" autoComplete="off" placeholder="Evil Rabbit" />
+      <FieldDescription>This appears on invoices and emails.</FieldDescription>
+    </Field>
+    <Field>
+      <FieldLabel for="username">Username</FieldLabel>
+      <Input id="username" autoComplete="off" aria-invalid />
+      <FieldError>Choose another username.</FieldError>
+    </Field>
+    <Field orientation="horizontal">
+      <Switch id="newsletter" />
+      <FieldLabel for="newsletter">Subscribe to the newsletter</FieldLabel>
+    </Field>
+  </FieldGroup>
+</FieldSet>
+```
+
+## Anatomy
+
+The `Field` family is designed for composing accessible forms. A typical field is structured as follows:
+
+```tsx showLineNumbers
+<Field>
+  <FieldLabel for="input-id">Label</FieldLabel>
+  {/* Input, Select, Switch, etc. */}
+  <FieldDescription>Optional helper text.</FieldDescription>
+  <FieldError>Validation message.</FieldError>
+</Field>
+```
+
+- `Field` is the core wrapper for a single field.
+- `FieldContent` is a flex column that groups label and description. Not required if you have no description.
+- Wrap related fields with `FieldGroup`, and use `FieldSet` with `FieldLegend` for semantic grouping.
+
+## Examples
+
+### Input
+
+::::tab-group[exampl21]
+:::tab[Preview]
+
+<ComponentPreview name="field-input" />
+
+:::
+
+:::tab[Code]
+
+```file="~/registry/v1/examples/field-input" frame=none showLineNumbers
+
+```
+
+:::
+::::
+
+### Textarea
+
+::::tab-group[example2]
+:::tab[Preview]
+
+<ComponentPreview name="field-textarea" />
+
+:::
+
+:::tab[Code]
+
+```file="~/registry/v1/examples/field-textarea" frame=none showLineNumbers
+
+```
+
+:::
+::::
+
+### Select
+
+::::tab-group[example3]
+:::tab[Preview]
+
+<ComponentPreview name="field-select" />
+
+:::
+
+:::tab[Code]
+
+```file="~/registry/v1/examples/field-select" frame=none showLineNumbers
+
+```
+
+:::
+::::
+
+### Slider
+
+::::tab-group[example4]
+:::tab[Preview]
+
+<ComponentPreview name="field-slider" />
+
+:::
+
+:::tab[Code]
+
+```file="~/registry/v1/examples/field-slider" frame=none showLineNumbers
+
+```
+
+:::
+::::
+
+### Fieldset
+
+::::tab-group[example5]
+:::tab[Preview]
+
+<ComponentPreview name="field-fieldset" />
+
+:::
+
+:::tab[Code]
+
+```file="~/registry/v1/examples/field-fieldset" frame=none showLineNumbers
+
+```
+
+:::
+::::
+
+### Checkbox
+
+::::tab-group[example6]
+:::tab[Preview]
+
+<ComponentPreview name="field-checkbox" />
+
+:::
+
+:::tab[Code]
+
+```file="~/registry/v1/examples/field-checkbox" frame=none showLineNumbers
+
+```
+
+:::
+::::
+
+### Radio
+
+::::tab-group[example7]
+:::tab[Preview]
+
+<ComponentPreview name="field-radio" />
+
+:::
+
+:::tab[Code]
+
+```file="~/registry/v1/examples/field-radio" frame=none showLineNumbers
+
+```
+
+:::
+::::
+
+### Switch
+
+::::tab-group[example8]
+:::tab[Preview]
+
+<ComponentPreview name="field-switch" />
+
+:::
+
+:::tab[Code]
+
+```file="~/registry/v1/examples/field-switch" frame=none showLineNumbers
+
+```
+
+:::
+::::
+
+### Choice Card
+
+::::tab-group[example9]
+:::tab[Preview]
+
+<ComponentPreview name="field-choice-card" />
+
+:::
+
+:::tab[Code]
+
+```file="~/registry/v1/examples/field-choice-card" frame=none showLineNumbers
+
+```
+
+:::
+::::
+
+### Field Group
+
+::::tab-group[example10]
+:::tab[Preview]
+
+<ComponentPreview name="field-group-example" />
+
+:::
+
+:::tab[Code]
+
+```file="~/registry/v1/examples/field-group-example" frame=none showLineNumbers
+
+```
+
+:::
+::::
+
+## Responsive Layout
+
+- **Vertical fields:** Default orientation stacks label, control, and helper text—ideal for mobile-first layouts.
+- **Horizontal fields:** Set `orientation="horizontal"` on `Field` to align the label and control side-by-side. Pair with `FieldContent` to keep descriptions aligned.
+- **Responsive fields:** Set `orientation="responsive"` for automatic column layouts inside container-aware parents. Apply `@container/field-group` classes on `FieldGroup` to switch orientations at specific breakpoints.
+
+::::tab-group[example11]
+:::tab[Preview]
+
+<ComponentPreview name="field-responsive" />
+
+:::
+
+:::tab[Code]
+
+```file="~/registry/v1/examples/field-responsive" frame=none showLineNumbers
+
+```
+
+:::
+::::
+
+## Validation and Errors
+
+- Add `data-invalid` to `Field` to switch the entire block into an error state.
+- Add `aria-invalid` on the input itself for assistive technologies.
+- Render `FieldError` immediately after the control or inside `FieldContent` to keep error messages aligned with the field.
+
+```tsx showLineNumbers /data-invalid/ /aria-invalid/
+<Field data-invalid>
+  <FieldLabel htmlFor="email">Email</FieldLabel>
+  <Input id="email" type="email" aria-invalid />
+  <FieldError>Enter a valid email address.</FieldError>
+</Field>
+```
+
+## Accessibility
+
+- `FieldSet` and `FieldLegend` keep related controls grouped for keyboard and assistive tech users.
+- `Field` outputs `role="group"` so nested controls inherit labeling from `FieldLabel` and `FieldLegend` when combined.
+- Apply `FieldSeparator` sparingly to ensure screen readers encounter clear section boundaries.
+
 ## API Reference
 
 ### FieldSet

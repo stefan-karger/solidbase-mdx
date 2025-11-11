@@ -160,6 +160,20 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "switch": {
+    name: "switch",
+    description: "",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    component: lazy(() => import("~/registry/v1/ui/switch.tsx")),
+    files: [{
+      path: "registry/ui/switch.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
   "use-mobile": {
     name: "use-mobile",
     description: "",
@@ -426,6 +440,34 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "field-checkbox": {
+    name: "field-checkbox",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["field","checkbox"],
+    component: lazy(() => import("~/registry/v1/examples/field-checkbox.tsx")),
+    files: [{
+      path: "registry/examples/field-checkbox.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "field-choice-card": {
+    name: "field-choice-card",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["field","radio-group"],
+    component: lazy(() => import("~/registry/v1/examples/field-choice-card.tsx")),
+    files: [{
+      path: "registry/examples/field-choice-card.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
   "field-demo": {
     name: "field-demo",
     description: "",
@@ -434,6 +476,132 @@ export const Index: Record<string, any> = {
     component: lazy(() => import("~/registry/v1/examples/field-demo.tsx")),
     files: [{
       path: "registry/examples/field-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "field-fieldset": {
+    name: "field-fieldset",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["field","input"],
+    component: lazy(() => import("~/registry/v1/examples/field-fieldset.tsx")),
+    files: [{
+      path: "registry/examples/field-fieldset.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "field-group-example": {
+    name: "field-group-example",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["field","checkbox"],
+    component: lazy(() => import("~/registry/v1/examples/field-group-example.tsx")),
+    files: [{
+      path: "registry/examples/field-group-example.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "field-input": {
+    name: "field-input",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["field","input"],
+    component: lazy(() => import("~/registry/v1/examples/field-input.tsx")),
+    files: [{
+      path: "registry/examples/field-input.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "field-radio": {
+    name: "field-radio",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["field","radio-group"],
+    component: lazy(() => import("~/registry/v1/examples/field-radio.tsx")),
+    files: [{
+      path: "registry/examples/field-radio.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "field-responsive": {
+    name: "field-responsive",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["field","button","input","textarea"],
+    component: lazy(() => import("~/registry/v1/examples/field-responsive.tsx")),
+    files: [{
+      path: "registry/examples/field-responsive.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "field-select": {
+    name: "field-select",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["field","select"],
+    component: lazy(() => import("~/registry/v1/examples/field-select.tsx")),
+    files: [{
+      path: "registry/examples/field-select.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "field-slider": {
+    name: "field-slider",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["field","slider"],
+    component: lazy(() => import("~/registry/v1/examples/field-slider.tsx")),
+    files: [{
+      path: "registry/examples/field-slider.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "field-switch": {
+    name: "field-switch",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["field","switch"],
+    component: lazy(() => import("~/registry/v1/examples/field-switch.tsx")),
+    files: [{
+      path: "registry/examples/field-switch.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "field-textarea": {
+    name: "field-textarea",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["field","textarea"],
+    component: lazy(() => import("~/registry/v1/examples/field-textarea.tsx")),
+    files: [{
+      path: "registry/examples/field-textarea.tsx",
       type: "registry:example",
       target: ""
     }],
@@ -490,6 +658,20 @@ export const Index: Record<string, any> = {
     component: lazy(() => import("~/registry/v1/examples/slider-demo.tsx")),
     files: [{
       path: "registry/examples/slider-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "switch-demo": {
+    name: "switch-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["switch","label"],
+    component: lazy(() => import("~/registry/v1/examples/switch-demo.tsx")),
+    files: [{
+      path: "registry/examples/switch-demo.tsx",
       type: "registry:example",
       target: ""
     }],

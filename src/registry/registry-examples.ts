@@ -200,12 +200,133 @@ export const examples: Registry["items"] = [
     ]
   },
   {
+    name: "field-checkbox",
+    type: "registry:example",
+    registryDependencies: ["field", "checkbox"],
+    files: [
+      {
+        path: "examples/field-checkbox.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "field-choice-card",
+    type: "registry:example",
+    registryDependencies: ["field", "radio-group"],
+    files: [
+      {
+        path: "examples/field-choice-card.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
     name: "field-demo",
     type: "registry:example",
     registryDependencies: ["field"],
     files: [
       {
         path: "examples/field-demo.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "field-fieldset",
+    type: "registry:example",
+    registryDependencies: ["field", "input"],
+    files: [
+      {
+        path: "examples/field-fieldset.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "field-group-example",
+    type: "registry:example",
+    registryDependencies: ["field", "checkbox"],
+    files: [
+      {
+        path: "examples/field-group-example.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "field-input",
+    type: "registry:example",
+    registryDependencies: ["field", "input"],
+    files: [
+      {
+        path: "examples/field-input.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "field-radio",
+    type: "registry:example",
+    registryDependencies: ["field", "radio-group"],
+    files: [
+      {
+        path: "examples/field-radio.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "field-responsive",
+    type: "registry:example",
+    registryDependencies: ["field", "button", "input", "textarea"],
+    files: [
+      {
+        path: "examples/field-responsive.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "field-select",
+    type: "registry:example",
+    registryDependencies: ["field", "select"],
+    files: [
+      {
+        path: "examples/field-select.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "field-slider",
+    type: "registry:example",
+    registryDependencies: ["field", "slider"],
+    files: [
+      {
+        path: "examples/field-slider.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "field-switch",
+    type: "registry:example",
+    registryDependencies: ["field", "switch"],
+    files: [
+      {
+        path: "examples/field-switch.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "field-textarea",
+    type: "registry:example",
+    registryDependencies: ["field", "textarea"],
+    files: [
+      {
+        path: "examples/field-textarea.tsx",
         type: "registry:example"
       }
     ]
@@ -250,6 +371,17 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "examples/slider-demo.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "switch-demo",
+    type: "registry:example",
+    registryDependencies: ["switch", "label"],
+    files: [
+      {
+        path: "examples/switch-demo.tsx",
         type: "registry:example"
       }
     ]

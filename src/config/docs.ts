@@ -68,6 +68,10 @@ export const docsConfig: Config = {
           href: "/docs/components/slider"
         },
         {
+          title: "Switch",
+          href: "/docs/components/switch"
+        },
+        {
           title: "Tooltip",
           href: "/docs/components/tooltip"
         }
